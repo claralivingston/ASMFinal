@@ -22,4 +22,45 @@ state$StateName <- as.character(state$StateName)
 state <- state%>%mutate(StateAbb=State,State=ifelse(State=="DC","District of Columbia",as.character(StateName)))
 AllData <- right_join(state,team)
 write.csv(AllData,"AllData.csv")
+
+# make strings numeric
+AllData$Capacity <- as.numeric(gsub(",", "", AllData$Capacity) )
+AllData$FranchiseValue <- as.numeric(gsub(",", "", AllData$FranchiseValue) )
+
+# making percent of home wins as variable
+
+AllData <- AllData %>% mutate(WinPct = HomeWins/HomeGames)
+```
+
+# EDA
+
+```{r}
+library(ggplot2)
+# Team Level Variables
+# Basic EDA
+# #
+boxplot(AllData$WinPct)
+summary(AllData$WinPct)
+# # Sport
+table(AllData$Type)
+
+# # Capacity
+hist(AllData$Capacity)
+summary(AllData$Capacity)
+ggplot(AllData, aes(x=Type, y = Capacity)) + geom_boxplot() # interaction needed for stadium size and sport
+
+# # FranchiseValue
+hist(AllData$FranchiseValue)
+summary(AllData$FranchiseValue)
+ggplot(AllData, aes(x=Type, y = FranchiseValue)) + geom_boxplot() # interaction needed for franchise and sport
+
+# # Attendance
+hist(AllData$Attendence)
+summary(AllData$Attendence)
+ggplot(AllData, aes(x=Type, y = Attendence)) + geom_boxplot() # interaction needed for franchise and sport
+
+# # Year
+hist(AllData$Year.opened)
+tapply(AllData$Capacity, AllData$Year.opened, mean)
+tapply(AllData$Year.opened, AllData$Type,mean) # hockey and basketball have newest stadiums and baseball and football have older, with baseball being oldest
 ```
