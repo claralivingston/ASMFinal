@@ -7,12 +7,18 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(maps)
+library(dplyr)
 ```
 
+#Data Join
 ```{r}
 state <- read.csv("StateData.csv")
-team <- read.csv("TeamData.csv")
+team <- read.csv("TeamData.csv",stringsAsFactors = TRUE)
 
-
+statestuff <- data.frame(state.abb,state.name)
+colnames(statestuff) <- c("State","StateName")
+state <- full_join(state,statestuff)
+state$StateName <- as.character(state$StateName)
+state <- state%>%mutate(StateAbb=State,State=ifelse(State=="DC","District of Columbia",as.character(StateName)))
+AllData <- right_join(state,team)
 ```
