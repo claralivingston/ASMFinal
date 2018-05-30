@@ -7,7 +7,28 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(fiftystater)
+library(ggplot2)
+```
 
-avengers <- read.csv("avengers.csv")
-View(avengers)
+```{r}
+AllStates <- fifty_states
+AllStates$state <- AllStates$id
+state <- read.csv("StateData.csv")
+statestuff <- data.frame(state.abb,state.name)
+colnames(statestuff) <- c("State","StateName")
+state <- full_join(state,statestuff)
+state$StateName <- as.character(state$StateName)
+state <- state%>%mutate(StateAbb=State,State=ifelse(State=="DC","District of Columbia",StateName))
+state <- state%>%mutate(state2=tolower(State))
+
+#Population
+ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Population), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Population By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Population", palette = "BuPu") +theme_classic()
+
+#Happiness
+ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Happiness), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Happiness By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Happiness", palette = "BuPu") +theme_classic()
+
+state2 <- state%>%filter(StateAbb!="DC")
+#Trump
+ggplot() + coord_map() + geom_map(data = state2, aes(map_id = state2, fill = Trump.Vote), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Percent Voted Trump 2016") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Percent", palette = "BuPu") +theme_classic()
 ```
