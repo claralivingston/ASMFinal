@@ -21,4 +21,5 @@ state <- full_join(state,statestuff)
 state$StateName <- as.character(state$StateName)
 state <- state%>%mutate(StateAbb=State,State=ifelse(State=="DC","District of Columbia",as.character(StateName)))
 AllData <- right_join(state,team)
+write.csv(AllData,"AllData.csv")
 ```
