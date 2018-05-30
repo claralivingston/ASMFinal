@@ -7,4 +7,12 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(maps)
+```
+
+```{r}
+state <- read.csv("StateData.csv")
+team <- read.csv("TeamData.csv")
+
+
 ```
