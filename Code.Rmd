@@ -65,9 +65,10 @@ tapply(AllData$Capacity, AllData$Year.opened, mean)
 tapply(AllData$Year.opened, AllData$Type,mean) # hockey and basketball have newest stadiums and baseball and football have older, with baseball being oldest
 ```
 
-Potential Interactions
+# Potential Interactions
 
-Significant Looking interactions: Capacity and Attandence, sport and franchise, year and sport, sport and attendance, franchise and attendence
+Significant Looking interactions Level 1:
+Capacity and Attandence, sport and franchise, year and sport, sport and attendance, franchise and attendence
 ```{r}
 # Level 1 Interactions
 
@@ -111,4 +112,22 @@ ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Type)
 
 # franchise $ and attendance
 ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~FranchiseFactor) +geom_smooth(method=lm) # potentially
+
+```
+
+Significant Looking Interactions Level 2:
+pop and happy, happy and trump
+```{r}
+# Level 2 interactions
+
+# pop and happy
+ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm) # interaction!
+
+# happy and trump
+ggplot(AllData, aes(x=Trump.Vote,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm) # interaction!
+
+# pop and trump
+# make population a factor for data exploration
+AllData$PopFactor <- cut(AllData$Population, breaks = c(0, 6782564, 11694664,  21312211,39776831), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
+ggplot(AllData, aes(x=Trump.Vote,y = WinPct)) + geom_point() + facet_wrap(~as.factor(PopFactor)) +geom_smooth(method=lm) # interaction!
 ```
