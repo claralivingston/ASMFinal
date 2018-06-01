@@ -9,6 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(ggplot2)
+library(lme4)
 ```
 
 #Data Join
@@ -20,8 +21,12 @@ statestuff <- data.frame(state.abb,state.name)
 colnames(statestuff) <- c("State","StateName")
 state <- full_join(state,statestuff)
 state$StateName <- as.character(state$StateName)
-state <- state%>%mutate(StateAbb=State,State=ifelse(State=="DC","District of Columbia",as.character(StateName)))
+state <- state%>%mutate(StateName=ifelse(is.na(StateName),"D.C.",StateName))
+team$State <- as.character(team$State)
+team <- team%>%mutate(State=ifelse(State=="District of Columbia","D.C.",State))
+state <- state%>%mutate(State1=State,State=StateName)
 AllData <- right_join(state,team)
+AllData <- AllData%>%filter(!is.na(Happiness))
 write.csv(AllData,"AllData.csv")
 
 # make strings numeric
@@ -47,17 +52,17 @@ table(AllData$Type)
 # # Capacity
 hist(AllData$Capacity)
 summary(AllData$Capacity)
-ggplot(AllData, aes(x=Type, y = Capacity)) + geom_boxplot() # interaction needed for stadium size and sport
+ggplot(AllData, aes(x=Type, y = Capacity)) + geom_boxplot() 
 
 # # FranchiseValue
 hist(AllData$FranchiseValue)
 summary(AllData$FranchiseValue)
-ggplot(AllData, aes(x=Type, y = FranchiseValue)) + geom_boxplot() # interaction needed for franchise and sport
+ggplot(AllData, aes(x=Type, y = FranchiseValue)) + geom_boxplot() 
 
 # # Attendance
 hist(AllData$Attendence)
 summary(AllData$Attendence)
-ggplot(AllData, aes(x=Type, y = Attendence)) + geom_boxplot() # interaction needed for franchise and sport
+ggplot(AllData, aes(x=Type, y = Attendence)) + geom_boxplot() 
 
 # # Year
 hist(AllData$Year.opened)
@@ -68,7 +73,7 @@ tapply(AllData$Year.opened, AllData$Type,mean) # hockey and basketball have newe
 # Potential Interactions
 
 Significant Looking interactions Level 1:
-Capacity and Attandence, sport and franchise, year and sport, sport and attendance, franchise and attendence
+Capacity and Attandence, sport and franchise, year and sport, sport and attendance, franchise and attendence, sport and capacity
 ```{r}
 # Level 1 Interactions
 
@@ -83,14 +88,14 @@ AllData$YearFactor <- cut(AllData$Year.opened, breaks = c(0, 1994, 1999,  2004,2
 
 
 #cap and year
-ggplot(AllData, aes(x=Year.opened, y = Capacity, color = WinPct)) + geom_point()
-ggplot(AllData, aes(x=Year.opened,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) # doesn't appear to be an interaction
+ggplot(AllData, aes(x=Year.opened, y = Capacity, color = WinPct)) + geom_point()+geom_smooth(method=lm)
+ggplot(AllData, aes(x=Year.opened,y = WinPct)) + geom_point() + facet_wrap(~CapFactor)+geom_smooth(method=lm) # doesn't appear to be an interaction
 
 #cap and sport
-ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~Type) # doesn't appear to be an interaction
+ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~Type)+geom_smooth(method=lm) # Interaction
 
 #cap and franchise $$
-ggplot(AllData, aes(x=FranchiseValue,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) # doesn't appear to be an interaction
+ggplot(AllData, aes(x=FranchiseValue,y = WinPct)) + geom_point() + facet_wrap(~CapFactor)+geom_smooth(method=lm) # doesn't appear to be an interaction
 
 #cap and attendance
 ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm) # Interaction
@@ -183,4 +188,15 @@ ggplot(AllData, aes(x=Trump.Vote,y = WinPct)) + geom_point() + facet_wrap(~Franc
 AllData$TrumpFactor <- cut(AllData$Trump.Vote, breaks = c(0, 36.50,47.25,  50.40,65.40), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
 ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~TrumpFactor) +geom_smooth(method=lm) # potentially
 
+```
+
+
+#Model Building
+```{r}
+AllData$Happiness <- as.factor(AllData$Happiness)
+AllData <- AllData%>% mutate(Capacity2=scale(Capacity),Population2=scale(Population),FranchiseValue2=scale(FranchiseValue))
+
+sports.glmer <- glmer(WinPct~Capacity2+Attendence+Type+FranchiseValue2+Year.opened+Capacity2:Attendence+Type:FranchiseValue2+Year.opened:Type+Type:Attendence+FranchiseValue2:Attendence+Type:Capacity2+(Population2+Trump.Vote+Happiness)^2+Happiness:Capacity2+Trump.Vote:Attendence+Happiness:Type+Population2:Year.opened+Happiness:Year.opened+(1|State),family=binomial,data=AllData,weights=HomeGames)
+
+summary(AllData)
 ```
