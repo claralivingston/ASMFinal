@@ -116,7 +116,7 @@ ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Franc
 ```
 
 Significant Looking Interactions Level 2:
-pop and happy, happy and trump
+*check all* pop and happy, happy and trump, pop and trump
 ```{r}
 # Level 2 interactions
 
@@ -130,4 +130,57 @@ ggplot(AllData, aes(x=Trump.Vote,y = WinPct)) + geom_point() + facet_wrap(~as.fa
 # make population a factor for data exploration
 AllData$PopFactor <- cut(AllData$Population, breaks = c(0, 6782564, 11694664,  21312211,39776831), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
 ggplot(AllData, aes(x=Trump.Vote,y = WinPct)) + geom_point() + facet_wrap(~as.factor(PopFactor)) +geom_smooth(method=lm) # interaction!
+```
+
+Significant Looking Interactions Cross Levels:
+
+happiness and capacity, happiness and year, hapiness and sport, population and year, trump and attendance
+
+```{r}
+# hap and cap
+ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm) # interaction!
+
+# hap and year
+ggplot(AllData, aes(x=Year.opened,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm) # interaction!
+
+# hap and sport
+ggplot(AllData, aes(x=Type,y = WinPct)) + geom_boxplot(aes(color = as.factor(Happiness))) # interaction potential
+
+# hap and fran$
+ggplot(AllData, aes(x=FranchiseValue,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm) # not really
+
+# hap and att
+ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm) # not really
+
+# pop and cap
+ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm) # not really
+
+# pop and year
+ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~YearFactor) +geom_smooth(method=lm) # potentially
+
+# pop and sport
+ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm) # not really
+
+# pop and fran$
+ggplot(AllData, aes(x=FranchiseValue,y = WinPct)) + geom_point() + facet_wrap(~PopFactor) +geom_smooth(method=lm) # not really
+
+# pop and att
+ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~PopFactor) +geom_smooth(method=lm) # no
+
+# trump and cap
+ggplot(AllData, aes(x=Trump.Vote,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm) # no
+
+# trump and year
+ggplot(AllData, aes(x=Trump.Vote,y = WinPct)) + geom_point() + facet_wrap(~YearFactor) +geom_smooth(method=lm) # no
+
+# trump and sport
+ggplot(AllData, aes(x=Trump.Vote,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm) # no
+
+# trump and fran$
+ggplot(AllData, aes(x=Trump.Vote,y = WinPct)) + geom_point() + facet_wrap(~FranchiseFactor) +geom_smooth(method=lm) # no
+
+# trump and att
+AllData$TrumpFactor <- cut(AllData$Trump.Vote, breaks = c(0, 36.50,47.25,  50.40,65.40), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
+ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~TrumpFactor) +geom_smooth(method=lm) # potentially
+
 ```
