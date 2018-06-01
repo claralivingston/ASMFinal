@@ -193,17 +193,37 @@ ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Trump
 
 #Model Building
 ```{r}
+#Scaling Variables
 AllData$Happiness2 <- as.factor(AllData$Happiness)
-AllData$State1 <- as.factor(AllData$State1)
 AllData <- AllData%>% mutate(Capacity2=scale(Capacity),Population2=scale(Population),FranchiseValue2=scale(FranchiseValue),Attendence2=scale(Attendence),Trump.Vote2=scale(Trump.Vote),Year.opened2=scale(Year.opened))
 
-sports.glmerNone <- glmer(WinPct~1+(1|State),family=binomial,weights=HomeGames,data=AllData)
+#Random Intercept Check
+sports.glmerNone <- glmer(WinPct~1+(1|State),family=binomial,weights=HomeGames,data=AllData) #Standard Deviation for random effect is about 0.1909 indicating that there is variation within states related to win percentage. This seems small, but considering win percentage is between 0 and 1, this indicates a standard devation in games won of 19.09%
 summary(sports.glmerNone)
 
-sports.glmer <- glmer(WinPct~Capacity2+Attendence2+Type+FranchiseValue2+Year.opened2+Population2+Trump.Vote2+Happiness+(1|State1),family = binomial,data=AllData,weights=HomeGames)
-
-sports.glmerFULL <- glmer(WinPct~Capacity2+Attendence2+Type+FranchiseValue2+Year.opened2+Capacity2:Attendence2+Type:FranchiseValue2+Year.opened2:Type+Type:Attendence2+FranchiseValue2:Attendence2+Type:Capacity2+(Population2+Trump.Vote2+Happiness)^2+Happiness:Capacity2+Trump.Vote2:Attendence2+Happiness:Type+Population2:Year.opened2+Happiness:Year.opened2+(1|State1),family=binomial,data=AllData,weights=HomeGames)
-
+#Model will all interactions that looked potentially influential - Full model
+sports.glmerFULL <- glmer(WinPct~Capacity2+Attendence2+Type+FranchiseValue2+Year.opened2+Capacity2:Attendence2+Type:FranchiseValue2+Year.opened2:Type+Type:Attendence2+FranchiseValue2:Attendence2+Type:Capacity2+(Population2+Trump.Vote2+Happiness)^2+Happiness:Capacity2+Trump.Vote2:Attendence2+Happiness:Type+Population2:Year.opened2+Happiness:Year.opened2+(1|State),family=binomial,data=AllData,weights=HomeGames)
 summary(sports.glmerFULL)
+
+#Starting Build of model with individual terms
+sports.glmer <- glmer(WinPct~Capacity2+Attendence2+Type+FranchiseValue2+Year.opened2+Population2+Trump.Vote2+Happiness+(1|State),family = binomial,data=AllData,weights=HomeGames)
 summary(sports.glmer)
+
+#From full model looked like type:attendence, type:capacity, population:happiness, population:trump, and happiness:year looked most influential
+sports.glmer2 <- update(sports.glmer,.~.+Type:Attendence2+Type:Capacity2+Population2:Happiness+Population2:Trump.Vote2+Happiness:Year.opened2)
+anova(sports.glmer,sports.glmer2) #Very low p value - at least one of the 5 additional terms is significant
+
+summary(sports.glmer2) #population2:Trump and year:happiness look non significant
+
+sports.glmer3 <- update(sports.glmer2,.~.-Population2:Trump.Vote2-Year.opened2:Happiness)
+anova(sports.glmer2,sports.glmer3) #neither significant in the model
+summary(sports.glmer3) #looks like trump.vote and year.opened not significant
+
+sports.glmer4 <- update(sports.glmer3,.~.-Trump.Vote2-Year.opened2)
+anova(sports.glmer4,sports.glmer3) #smaller prefered
+summary(sports.glmer4)
+
+#Now we will try to add in other significant interactions from EDA
+
+
 ```

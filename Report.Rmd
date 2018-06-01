@@ -21,6 +21,9 @@ state <- full_join(state,statestuff)
 state$StateName <- as.character(state$StateName)
 state <- state%>%mutate(StateAbb=State,State=ifelse(State=="DC","District of Columbia",StateName))
 state <- state%>%mutate(state2=tolower(State))
+AllData <- read.csv("AllData.csv")
+AllData <- AllData%>%mutate(state2=tolower(State),WinPct = HomeWins/HomeGames)
+AllData2 <- AllData%>%group_by(state2)%>%summarise(AvgWin=mean(WinPct))
 
 #Population
 ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Population), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Population By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Population", palette = "BuPu") +theme_classic()
@@ -30,5 +33,5 @@ ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Happ
 
 state2 <- state%>%filter(StateAbb!="DC")
 #Trump
-ggplot() + coord_map() + geom_map(data = state2, aes(map_id = state2, fill = Trump.Vote), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Percent Voted Trump 2016") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Percent", palette = "BuPu") +theme_classic()
+ggplot() + coord_map() + geom_map(data = AllData2, aes(map_id = state2, fill = AvgWin), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Percent Won By State") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Percent", palette = "BuPu") +theme_classic()
 ```
