@@ -8,6 +8,7 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
+library(ggplot2)
 ```
 
 #Data Join
@@ -35,7 +36,6 @@ AllData <- AllData %>% mutate(WinPct = HomeWins/HomeGames)
 # EDA
 
 ```{r}
-library(ggplot2)
 # Team Level Variables
 # Basic EDA
 # #
@@ -63,4 +63,28 @@ ggplot(AllData, aes(x=Type, y = Attendence)) + geom_boxplot() # interaction need
 hist(AllData$Year.opened)
 tapply(AllData$Capacity, AllData$Year.opened, mean)
 tapply(AllData$Year.opened, AllData$Type,mean) # hockey and basketball have newest stadiums and baseball and football have older, with baseball being oldest
+```
+
+Potential Interactions
+
+Significant Looking interactions: Capacity and Attandence
+```{r}
+# Level 1 Interactions
+
+# make capacity a factor for data exploration
+AllData$CapFactor <- cut(AllData$Capacity, breaks = c(0, 18578, 27000,  62250,100000), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
+
+
+#cap and year
+ggplot(AllData, aes(x=Year.opened, y = Capacity, color = WinPct)) + geom_point()
+ggplot(AllData, aes(x=Year.opened,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) # doesn't appear to be an interaction
+
+#cap and sport
+ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~Type) # doesn't appear to be an interaction
+
+#cap and franchise $$
+ggplot(AllData, aes(x=FranchiseValue,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) # doesn't appear to be an interaction
+
+#cap and attendance
+ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm) # Interaction
 ```
