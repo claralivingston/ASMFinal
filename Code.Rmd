@@ -67,12 +67,18 @@ tapply(AllData$Year.opened, AllData$Type,mean) # hockey and basketball have newe
 
 Potential Interactions
 
-Significant Looking interactions: Capacity and Attandence
+Significant Looking interactions: Capacity and Attandence, sport and franchise, year and sport, sport and attendance, franchise and attendence
 ```{r}
 # Level 1 Interactions
 
 # make capacity a factor for data exploration
 AllData$CapFactor <- cut(AllData$Capacity, breaks = c(0, 18578, 27000,  62250,100000), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
+
+# make franchise a factor for data exploration
+AllData$FranchiseFactor <- cut(AllData$FranchiseValue, breaks = c(0, 1.000e+09, 1.350e+09,  2.300e+09,4.900e+09), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
+
+# make attendance a factor for data exploration
+AllData$YearFactor <- cut(AllData$Year.opened, breaks = c(0, 1994, 1999,  2004,2019), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
 
 
 #cap and year
@@ -87,4 +93,22 @@ ggplot(AllData, aes(x=FranchiseValue,y = WinPct)) + geom_point() + facet_wrap(~C
 
 #cap and attendance
 ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm) # Interaction
+
+# year and sport
+ggplot(AllData, aes(x=Year.opened,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm) # potentially...
+
+# year and franchise $
+ggplot(AllData, aes(x=FranchiseValue,y = WinPct)) + geom_point() + facet_wrap(~YearFactor) +geom_smooth(method=lm) # nope
+
+# year and attandence
+ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~YearFactor) +geom_smooth(method=lm) # nope
+
+# sport and franchise $
+ggplot(AllData, aes(x=FranchiseValue,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm) # interaction
+
+# sport and attendance
+ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm) # potentially
+
+# franchise $ and attendance
+ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~FranchiseFactor) +geom_smooth(method=lm) # potentially
 ```
