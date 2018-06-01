@@ -194,9 +194,9 @@ ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Trump
 #Model Building
 ```{r}
 AllData$Happiness <- as.factor(AllData$Happiness)
-AllData <- AllData%>% mutate(Capacity2=scale(Capacity),Population2=scale(Population),FranchiseValue2=scale(FranchiseValue))
+AllData <- AllData%>% mutate(Capacity2=scale(Capacity),Population2=scale(Population),FranchiseValue2=scale(FranchiseValue),Attendence2=scale(Attendence),Trump.Vote2=scale(Trump.Vote),Year.opened2=scale(Year.opened))
 
-sports.glmer <- glmer(WinPct~Capacity2+Attendence+Type+FranchiseValue2+Year.opened+Capacity2:Attendence+Type:FranchiseValue2+Year.opened:Type+Type:Attendence+FranchiseValue2:Attendence+Type:Capacity2+(Population2+Trump.Vote+Happiness)^2+Happiness:Capacity2+Trump.Vote:Attendence+Happiness:Type+Population2:Year.opened+Happiness:Year.opened+(1|State),family=binomial,data=AllData,weights=HomeGames)
+sports.glmer <- glmer(WinPct~Capacity2+Attendence2+Type+FranchiseValue2+Year.opened2+Capacity2:Attendence2+Type:FranchiseValue2+Year.opened2:Type+Type:Attendence2+FranchiseValue2:Attendence2+Type:Capacity2+(Population2+Trump.Vote2+Happiness)^2+Happiness:Capacity2+Trump.Vote2:Attendence2+Happiness:Type+Population2:Year.opened2+Happiness:Year.opened2+(1|State),family=binomial,data=AllData,weights=HomeGames)
 
-summary(AllData)
+sports.glmer2 <- glmer(WinPct~Capacity2+Attendence2+Type+FranchiseValue2+Year.opened2+Population2+Trump.Vote2+Happiness+(1|State),family = binomial,data=AllData,weights=HomeGames)
 ```
