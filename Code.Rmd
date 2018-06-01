@@ -225,5 +225,59 @@ summary(sports.glmer4)
 
 #Now we will try to add in other significant interactions from EDA
 
+#add capacity:attendence
+sports.glmer5 <- update(sports.glmer4,.~.+Capacity2:Attendence2)
+anova(sports.glmer4,sports.glmer5) #larger prefered
+summary(sports.glmer5)
 
+
+#add type:franchise.value
+sports.glmer6 <- update(sports.glmer5,.~.+Type:FranchiseValue2)
+anova(sports.glmer6,sports.glmer5) #smaller prefered
+summary(sports.glmer6)
+
+
+#add year:type add in year to test
+sports.glmer6 <- update(sports.glmer5,.~.+Year.opened2+Year.opened2:Type)
+anova(sports.glmer6,sports.glmer5) #smaller prefered
+summary(sports.glmer6)
+
+#franchise:attendence
+sports.glmer6 <- update(sports.glmer5,.~.+Attendence2:FranchiseValue2)
+anova(sports.glmer6,sports.glmer5) #smaller prefered
+summary(sports.glmer6)
+
+#Happiness:trump
+sports.glmer6 <- update(sports.glmer5,.~.+Happiness:Trump.Vote2)
+anova(sports.glmer6,sports.glmer5) #smaller prefered
+summary(sports.glmer6)
+
+#Happiness:capacity
+sports.glmer6 <- update(sports.glmer5,.~.+Happiness:Capacity2)
+anova(sports.glmer6,sports.glmer5) #smaller prefered
+summary(sports.glmer6)
+
+#Happiness:Type
+sports.glmer6 <- update(sports.glmer5,.~.+Type:Happiness)
+anova(sports.glmer6,sports.glmer5) #smaller prefered
+summary(sports.glmer6)
+
+#Population:Year - add year back in
+sports.glmer6 <- update(sports.glmer5,.~.+Year.opened2+Year.opened2:Population2)
+anova(sports.glmer6,sports.glmer5) #larger prefered
+summary(sports.glmer6) #interaction actually not significant
+
+#remove population:year
+sports.glmer7 <- update(sports.glmer6,.~.-Year.opened2:Population2)
+anova(sports.glmer6,sports.glmer7) #smaller prefered
+summary(sports.glmer7)
+
+#trump:attendence
+sports.glmer8 <- update(sports.glmer7,.~.+Trump.Vote2+Trump.Vote2:Attendence2)
+anova(sports.glmer8,sports.glmer7) #smaller prefered
+summary(sports.glmer8)
+
+
+#Final Model - Model 7
+sports.glmerFinal <- sports.glmer7
 ```
