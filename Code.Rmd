@@ -1,6 +1,6 @@
 ---
 title: "Code"
-author: "Clara Livingston"
+author: "Clara Livingston & Emily Kaegi"
 date: "May 25, 2018"
 output: pdf_document
 ---
