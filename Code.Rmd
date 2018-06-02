@@ -288,8 +288,12 @@ Here are the effects of each variable
 # Capacity interpretations
 sd(AllData$Capacity)
 
-# increasing capacity by 23,191.65 people increases the odds of winning at home by 3.1 times
+# increasing capacity by 23,191.65 people increases the odds of winning at home by 3.1 times for baseball
 exp(1.15213)
+exp(1.15213 +  1.05472) # basketball increasing capacity increases the odds of winning by 9 times
+exp(1.15213 +  -0.79504) # football increasing capacity increases the odds of winning by 40%
+exp(1.15213 +  0.84660) # hockey increasing capacity increases the odds of winning by 7.38 times
+
 
 # Type Sport Interpretations
 exp(2.39147) # basketball has 10.9 times more likely to win in home court than baseball
@@ -307,5 +311,27 @@ exp(-0.05649+0.28592) # basketball 25% increase
 exp(-0.05649+-0.79504) # football 57.3% decrease
 exp(-0.05649+0.84660) # hockey is 2.2 times increase
 
+# interaction between capacity and attendance
+exp(0.59470) # 1.8 times more, so increase one and the effect of the other increases by 80%
 
+# Franchise value interpretations
+sd(AllData$FranchiseValue)
+# increasing franchise value by 935,646,568 increases odds of winning at home by 14%
+exp(0.13268) 
+
+# population interpretations
+sd(AllData$Population)
+# increasing a state's population by 11,921,447 decreases the odds of a home win by 61% but don't forget about interaction
+exp(-0.95183)
+
+# interaction is 23% increase, so increases happiness effect by 23%
+exp(0.21211)
+
+# happy interpretation
+# increasing happiness by 1, increases odds of winning at home by 16%
+exp(0.15521)
+
+# year opened
+# increasing the year a stadium opened decreases the odds of winning by 8%, potentially older well established teams have better winning records while newer teams with newer stadiums do not have same legacy
+exp(-0.08336)
 ```
