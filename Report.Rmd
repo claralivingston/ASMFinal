@@ -6,7 +6,7 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, warnings=FALSE, message = FALSE, prompt = TRUE, comment = NULL, fig.align='center')
 library(fiftystater)
 library(ggplot2)
 ```
@@ -30,7 +30,7 @@ Some of the most interesting potential predictors we wanted to explore were what
 
 
 
-```{r,echo=FALSE}
+```{r,fig.cap="Caption Goes Here"}
 AllStates <- fifty_states
 AllStates$state <- AllStates$id
 state <- read.csv("StateData.csv")
