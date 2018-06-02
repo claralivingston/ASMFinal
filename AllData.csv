@@ -10,10 +10,10 @@
 "9","Missouri",2,56.4,6135888,"Missouri","MO","Busch Stadium","46,861.00","St. Louis",2006,"Baseball","St. Louis Cardinals",44,81,"1,900,000,000",93.2
 "10","California",4,31.5,39776830,"California","CA","Angel Stadium of Anaheim","45,050.00","Anaheim",1966,"Baseball","Los Angeles Angels",43,81,"1,800,000,000",82.5
 "11","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","Citizens Bank Park","43,647.00","Philadelphia",2004,"Baseball","Philadelphia Phillies",39,81,"1,700,000,000",57.6
-"12","California",4,31.5,39776830,"California","CA","Citizens Bank Park","42,445.00","San Diego",2004,"Baseball","San Diego Padres",43,81,"1,270,000,000",66.6
+"12","California",4,31.5,39776830,"California","CA","Petco Park","46,000.00","San Diego",2004,"Baseball","San Diego Padres",43,81,"1,270,000,000",66.6
 "13","Ohio",1,51.3,11694664,"Ohio","OH","Great American Ball Park","42,059.00","Cincinnati",2003,"Baseball","Cincinnati Reds",39,81,"1,010,000,000",42.2
 "14","Wisconsin",3,47.2,5818049,"Wisconsin","WI","Miller Park","41,900.00","Milwaukee",2001,"Baseball","Milwaukee Brewers",43,80,"1,030,000,000",78
-"15","D.C.",2,4.1,703608,"D.C.","DC","Miller Park","41,888.00","Washington, D.C.",2008,"Baseball","Washington Nationals",48,84,"1,675,000,000",70.1
+"15","D.C.",2,4.1,703608,"D.C.","DC","Nationals Park","41,222.00","Washington, D.C.",2008,"Baseball","Washington Nationals",48,84,"1,675,000,000",70.1
 "16","New York",2,36.5,19862512,"New York","NY","Citi Field","41,800.00","Flushing",2009,"Baseball","New York Mets",37,81,"2,100,000,000",69.5
 "17","Michigan",2,47.3,9991177,"Michigan","MI","Comerica Park","41,782.00","Detroit",2000,"Baseball","Detroit Tigers",34,81,"1,225,000,000",49.7
 "18","California",4,31.5,39776830,"California","CA","AT&T Park","41,503.00","San Francisco",2000,"Baseball","San Francisco Giants",38,81,"2,850,000,000",92.7
@@ -23,8 +23,8 @@
 "22","Minnesota",5,44.9,5628162,"Minnesota","MN","Target Field[40]","39,504.00","Minneapolis",2010,"Baseball","Minnesota Twins",41,81,"1,150,000,000",61
 "23","Missouri",2,56.4,6135888,"Missouri","MO","Ewing M. Kauffman Stadium","39,000.00","Kansas City",1973,"Baseball","Kansas City Royals",43,81,"1,015,000,000",52.1
 "24","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","PNC Park","38,496.00","Pittsburgh",2001,"Baseball","Pittsburgh Pirates",44,81,"1,260,000,000",44.5
-"25","Ohio",1,51.3,11694664,"Ohio","OH","Progressive Field","38,000.00","Cleveland",1994,"Baseball","Cleveland Indians",51,84,"1,045,000,000",43.8
-"26","Massachusetts",4,32.8,6895917,"Massachusetts","MA","Progressive Field","37,402.00","Boston",1912,"Baseball","Boston Red Sox",49,83,"2,800,000,000",91.3
+"25","Ohio",1,51.3,11694664,"Ohio","OH","Progressive Field","35,051.00","Cleveland",1994,"Baseball","Cleveland Indians",51,84,"1,045,000,000",43.8
+"26","Massachusetts",4,32.8,6895917,"Massachusetts","MA","Fenway Park","37,731.00","Boston",1912,"Baseball","Boston Red Sox",49,83,"2,800,000,000",91.3
 "27","Florida",4,48.6,21312211,"Florida","FL","Marlins Park","37,000.00","Miami",2012,"Baseball","Miami Marlins",42,88,"1,000,000,000",28.2
 "28","Florida",4,48.6,21312211,"Florida","FL","Tropicana Field","36,973.00","St. Petersburg",1990,"Baseball","Tampa Bay Rays",41,78,"900,000,000",41.3
 "29","Georgia",3,50.4,10545138,"Georgia","GA","SunTrust Park","41,149.00","Atlanta",2017,"Baseball","Atlanta Braves",37,81,"1,625,000,000",76.8

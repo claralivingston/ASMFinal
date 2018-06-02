@@ -15,7 +15,7 @@ library(lme4)
 #Data Join
 ```{r}
 state <- read.csv("StateData.csv")
-team <- read.csv("TeamData.csv",stringsAsFactors = TRUE)
+team <- read.csv("TeamData2.csv",stringsAsFactors = TRUE)
 
 statestuff <- data.frame(state.abb,state.name)
 colnames(statestuff) <- c("State","StateName")
@@ -277,6 +277,11 @@ sports.glmer8 <- update(sports.glmer7,.~.+Trump.Vote2+Trump.Vote2:Attendence2)
 anova(sports.glmer8,sports.glmer7) #smaller prefered
 summary(sports.glmer8)
 
+# franchise value is marginally significant, let's try to take it out
+#trump:attendence
+sports.glmer8 <- update(sports.glmer7,.~.-FranchiseValue2)
+anova(sports.glmer8,sports.glmer7) #it's pvalue is so close to .05 let's leave it
+summary(sports.glmer8)
 
 #Final Model - Model 7
 sports.glmerFinal <- sports.glmer7
@@ -288,50 +293,50 @@ Here are the effects of each variable
 # Capacity interpretations
 sd(AllData$Capacity)
 
-# increasing capacity by 23,191.65 people increases the odds of winning at home by 3.1 times for baseball
-exp(1.15213)
-exp(1.15213 +  1.05472) # basketball increasing capacity increases the odds of winning by 9 times
-exp(1.15213 +  -0.79504) # football increasing capacity increases the odds of winning by 40%
-exp(1.15213 +  0.84660) # hockey increasing capacity increases the odds of winning by 7.38 times
+# increasing capacity by 23,200 people increases the odds of winning at home by 3.36 times for baseball
+exp(1.21418)
+exp(1.21418 +  0.97581) # basketball increasing capacity increases the odds of winning by 8.9 times
+exp(1.21418 +  -1.85881) # football increasing capacity increases the odds of winning by 47.5%
+exp(1.21418 +  -5.12141) # hockey increasing capacity decreases the odds of winning by 98%
 
 
 # Type Sport Interpretations
-exp(2.39147) # basketball has 10.9 times more likely to win in home court than baseball
-exp(-0.79504) # football is 55% less likely to win in home court than baseball
-exp(-3.19599) # hockey is 96% less likely to win in home court than baseball
+exp(2.38943) # basketball has 10.9 times more likely to win in home court than baseball
+exp(1.09150) # football is 3 times more likely to win in home court than baseball
+exp(-3.19716) # hockey is 96% less likely to win in home court than baseball
 
-# makes sense because baseball stadiums are all different shapes, maybe hockey you cannot hear fans, football there are less games, so it's harder to win as many
+# makes sense because baseball stadiums are all different shapes, maybe hockey you cannot hear fans so home court doesn't matter
 
 # Attendence Interpretations
 sd(AllData$Attendence)
 
-# increasing attendance by 18.12 percent decreases the odds of winning at home by 5.5% but this changes based on sport and capacity. So if Baseball is the baseline, 5.5%
-exp(-0.05649)
-exp(-0.05649+0.28592) # basketball 25% increase
-exp(-0.05649+-0.79504) # football 57.3% decrease
-exp(-0.05649+0.84660) # hockey is 2.2 times increase
+# increasing attendance by 18.12 percent decreases the odds of winning at home by 6% but this changes based on sport and capacity. So if Baseball is the baseline, 6%
+exp(-0.06179)
+exp(-0.06179+ 0.32640) # basketball 30% increase
+exp(-0.06179+-0.85513) # football 60% decrease
+exp(-0.06179+0.88390) # hockey is 2.3 times increase
 
 # interaction between capacity and attendance
-exp(0.59470) # 1.8 times more, so increase one and the effect of the other increases by 80%
+exp(0.62979) # 1.9 times more, so increase one and the effect of the other increases by 80%
 
 # Franchise value interpretations
 sd(AllData$FranchiseValue)
-# increasing franchise value by 935,646,568 increases odds of winning at home by 14%
-exp(0.13268) 
+# increasing franchise value by 93,5646,568 increases odds of winning at home by 14%
+exp(0.13274) 
 
 # population interpretations
 sd(AllData$Population)
-# increasing a state's population by 11,921,447 decreases the odds of a home win by 61% but don't forget about interaction
-exp(-0.95183)
+# increasing a state's population by 11,921,447 decreases the odds of a home win by 62% but don't forget about interaction
+exp(-0.96189)
 
-# interaction is 23% increase, so increases happiness effect by 23%
-exp(0.21211)
+# interaction is 24% increase, so increases happiness effect by 24%
+exp(0.21383)
 
 # happy interpretation
-# increasing happiness by 1, increases odds of winning at home by 16%
-exp(0.15521)
+# increasing happiness by 1, increases odds of winning at home by 17%
+exp(0.15703)
 
 # year opened
 # increasing the year a stadium opened decreases the odds of winning by 8%, potentially older well established teams have better winning records while newer teams with newer stadiums do not have same legacy
-exp(-0.08336)
+exp(-0.08524)
 ```
