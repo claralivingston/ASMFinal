@@ -31,7 +31,11 @@ Our dependant variable, home win percentage, was determined using data from Team
 
 #Results
 
-EDA Paragraphs
+- Numerical summary of quantitative variables
+- map plot and exlination of random effect 
+- discussion of choosing to add type/sport as a variable rather than random effect
+- fixed effects and why we chose the interactions we did, with support from eda plots
+- discuss why we ended up not using the interactions we thought might be influential
 
 To discover the relationship between home game winning percentages and the variables of interest, we used logistic binomial regression. We observed variation in home win percentage by state, but did not want to include a variable for each state, we decided to include state as a random effect in our model. 
 
