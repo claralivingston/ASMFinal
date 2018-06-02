@@ -9,6 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = FALSE, warnings=FALSE, message = FALSE, prompt = TRUE, comment = NULL, fig.align='center')
 library(fiftystater)
 library(ggplot2)
+library(dplyr)
 ```
 
 #Introduction
@@ -31,11 +32,13 @@ Insert a couple sentences about modeling process description?
 
 The heirarchical form of the final model is below. Estimates for the $\beta$ parameters can be found in Table ??. Note that Sport Baseball is the baseline level.
 
-Level 1 (team level): $logodds(homewins) = a_i + \beta_0 Capacity_{ij} + \beta_1 Attendence_{ij} + \beta_2SportBasektball_{ij} + \beta_3SportFootball_{ij} + \beta_4SportHockey_{ij} + \beta_5FranchiseValue_{ij} + \beta_6 YearOpened_{ij} + \beta_7Capacity_{ij}SportBasektball_{ij} + \beta_8Capacity_{ij}SportFootball_{ij} + \beta_9Capacity_{ij}SportHockey_{ij} + + \beta_{10}Attendence_{ij}SportBasektball_{ij} + \beta_{11}Attendence_{ij}SportFootball_{ij} + \beta_{12}Attendence_{ij}SportHockey_{ij} + \beta_{13}Attendence_{ij}Capacity_{ij}$
+####Level 1 (team level): 
+$logodds(homewins) = a_i + \beta_0 Capacity_{ij} + \beta_1 Attendence_{ij} + \beta_2SportBasektball_{ij} + \beta_3SportFootball_{ij} + \beta_4SportHockey_{ij} + \beta_5FranchiseValue_{ij} + \beta_6 YearOpened_{ij} + \beta_7Capacity_{ij}SportBasektball_{ij} + \beta_8Capacity_{ij}SportFootball_{ij} + \beta_9Capacity_{ij}SportHockey_{ij} + + \beta_{10}Attendence_{ij}SportBasektball_{ij} + \beta_{11}Attendence_{ij}SportFootball_{ij} + \beta_{12}Attendence_{ij}SportHockey_{ij} + \beta_{13}Attendence_{ij}Capacity_{ij}$
 
-Level 2 (state level): $a_i = \alpha_0 + \beta_{14}Population_i + \beta_{15}Happiness_i + \beta_{16}Happiness_{i}Population_{i} + u_i$
+#### Level 2 (state level): 
+$a_i = \alpha_0 + \beta_{14}Population_i + \beta_{15}Happiness_i + \beta_{16}Happiness_{i}Population_{i} + u_i$
 
-Where $u_i$ ~ $Norm(0, \sigma)$. Our model predicted $\hat sigma =  0.1434$
+Where $u_i$ ~ $Norm(0, \sigma)$. Our model predicted $\hat \sigma =  0.1434$
 
 
 
