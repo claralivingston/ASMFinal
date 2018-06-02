@@ -280,4 +280,32 @@ summary(sports.glmer8)
 
 #Final Model - Model 7
 sports.glmerFinal <- sports.glmer7
+summary(sports.glmerFinal)
+```
+
+Here are the effects of each variable
+```{r}
+# Capacity interpretations
+sd(AllData$Capacity)
+
+# increasing capacity by 23,191.65 people increases the odds of winning at home by 3.1 times
+exp(1.15213)
+
+# Type Sport Interpretations
+exp(2.39147) # basketball has 10.9 times more likely to win in home court than baseball
+exp(-0.79504) # football is 55% less likely to win in home court than baseball
+exp(-3.19599) # hockey is 96% less likely to win in home court than baseball
+
+# makes sense because baseball stadiums are all different shapes, maybe hockey you cannot hear fans, football there are less games, so it's harder to win as many
+
+# Attendence Interpretations
+sd(AllData$Attendence)
+
+# increasing attendance by 18.12 percent decreases the odds of winning at home by 5.5% but this changes based on sport and capacity. So if Baseball is the baseline, 5.5%
+exp(-0.05649)
+exp(-0.05649+0.28592) # basketball 25% increase
+exp(-0.05649+-0.79504) # football 57.3% decrease
+exp(-0.05649+0.84660) # hockey is 2.2 times increase
+
+
 ```
