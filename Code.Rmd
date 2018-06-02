@@ -322,7 +322,11 @@ exp(-0.06179+-0.85513) # football 60% decrease
 exp(-0.06179+0.88390) # hockey is 2.3 times increase
 
 # interaction between capacity and attendance
-exp(0.62979) # 1.9 times more, so increase one and the effect of the other increases by 80%
+exp(0.62979*.263) # 1.2 times more baseball, so increase one and the effect of the other increases by 20%
+exp(0.62979*0.04482247) # 1.02 times more basketball, so increase one and the effect of the other increases by 2%
+exp(0.62979*0.5118844) # 1.38 times more football, so increase one and the effect of the other increases by 38%
+exp(0.62979*0.043) # 1.027 times more hockey, so increase one and the effect of the other increases by 2.7%
+
 
 # Franchise value interpretations
 sd(AllData$FranchiseValue)
@@ -349,17 +353,8 @@ exp(-0.08524)
 
 Using the model results, the most significant predictors of home winning percentag were stadium capacity, state population, state happiness level, attendence for hockey games, and type of sport. Many of these variables relate to characteristics of the stadium as well as a team's fan base. The only variable that was completely removed from the model was percent of Trump vote meaning that the percent of people in a state who voted for Trump had no effect on the home winning percentage of a team. 
 
-First we will examine how team level factors effect home win percentage. The first is what sport we want to look at. 
+First we will examine how team level factors effect home win percentage. The first is what sport we want to look at. Compared to baseball teams (our baseline) basketball teams have 10.9 times higher odds of winning at home and football is 3 times more likely to win at home than baseball. Hockey on the other hand sees a decrease in home winning odds of 96% compared to baseball. 
 
-For baseball teams, increasing their stadium capacity by 1,039 (the standard deviation of stadium capacity for baseball teams) increased the mean odds of winning at home by 37%. For basketball teams the effect is much stronger. Increasing capacity by their capacity standard error (6,116 seats) increases mean odds of winning at home by 2.8 times. Football teams actually see a decrease of 70.9% in mean home winning odds when they increase their stadium capacity by a standard deviation (11875 seats). Finally, hockey sees a decrease as well with their home game winning odds decreasing by 99% when they increase their stadium capacity one standard error of 998 seats. 
-
-#baseball SE is 1039.8813 so 1039.8813/23200=0.0448
-exp(1.21418*.263) # increase baseball stadium by 6,116 people 37% increase
-#basketball SE is 6116.0482 so 6116.0482/23,200=.263
-exp(1.21418*0.04482247 +  0.97581) # basketball increasing capacity increases the odds of winning by 2.8 times
-#football SE is 11875.7172 so 11875.7172/23200=.511
-exp(1.21418*0.5118844 +  -1.85881) # football increasing capacity decreases the odds of winning by 70.9%
-#hockey SE is 998.3133 so 998.3133/23200=0.043
-exp(1.21418*0.043 +  -5.12141) # hockey increasing capacity decreases the odds of winning by 99%
+For baseball teams, increasing their stadium capacity by 1,039 (the standard deviation of stadium capacity for baseball teams) increased the mean odds of winning at home by 37%. For basketball teams the effect is much stronger. Increasing capacity by their capacity standard error (6,116 seats) increases mean odds of winning at home by 2.8 times. Football teams actually see a decrease of 70.9% in mean home winning odds when they increase their stadium capacity by a standard deviation (11875 seats). Finally, hockey sees a decrease as well with their home game winning odds decreasing by 99% when they increase their stadium capacity one standard error of 998 seats. Increasing stadium size also chances the effect of attendence on odds of home wins since there is an interaction term for these variables. Increasing the baseball stadium capacity by the above amount increases the effect of attendance by 20%. Increasing basketball capacity increases the effect of attendance by 2%, football capacity increases attendence's effect by 38% and hockey 2.7%. Increasing a team's franchise value by $93,5646,568 (the standard deviation of this data) increases odds of winning at home by 14% holding all else constant. Finally, newer stadiums actually decrease the odds of winning. For every 19.8 years newer a stadium is, the mean odds of winning decreases by 8% holding all else constant. *for discussion potentially older well established teams have better winning records while newer teams with newer stadiums do not have same legacy *
 
 
