@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = FALSE, warnings=FALSE, message = FALSE, prompt = TR
 library(fiftystater)
 library(ggplot2)
 library(dplyr)
+library(stargazer)
 ```
 
 #Introduction
@@ -21,6 +22,12 @@ Instead of focusing on existance of "homefield advantage" we decided to look at 
 Some of the most interesting potential predictors we wanted to explore were what percentage of a states population voted for Donald Trump in the 2016 presidential election. Does political leaning have any correlation with how well teams play at home? Also, using a metric of states' happiness level, we were curious if happiness is in anyway correlated with winning percentage. Do teams in happier states win more? While we cannot determine if this is casual or even the direction of the relationship (are states happy because their teams win or do players in happy states play better?) it is still interesting to explore.
 
 #Methods
+
+Our data is pirmarily in two parts: data related to the state level characteristics and data related to the stadiums of the individual teams. At the state level we chose to focus on three variables related to general state dispositions. The first, population, was gathered from the World Population Review where we collected the approximate population of each state as of the end of 2017. In 2017 National Geographic did a survey of happiness level at each state and ranked the overall well-being of adults within each state on a scale from 1 to 5. Adults (18+) were asked to rate their well-being on a scale form 1-100 based on five primary categories: daily life, physical health, location, finances, and companionship. If a state averaged well in these categories, they would be ranked as a 5 for overall well-being and happiness. More on the study can be found in the National Geographic magazine. Finally, we decided to add a variable for the percentage of registered adults that voted for Donald Trump in the 2016 presidential election as recorded by the New York Times. As the country is heaviliy divided on thier beliefs, we were interested to see if this would affect the home team win percentage of the various teams within a given state. 
+
+The second portion of our data was related to the individual major league teams' home stadiums and stadium statistics for the 2017 seasons. We focused our study to baseball (MLB), basketball (MBA), football (NFL), and hockey (NHL). From Wikipedia, we were able to gather the name of the arena or stadium currently being used by active teams, capacity (in thousands), and year opened. It is important to note that across the internet there is some discrepancy in the actual capacity of some of these arenas. Generally, the capacity listed on Wikipedia is fairly accurate for our purposes and will be the variable used in this analysis. In addition to this basic information, we decided to look at the average attendance percentage (people in attendance divided by capacity) fro the 2017 season for these teams. This data was collected through ESPN's database on sport statistics for the NFL, MLB, NBA, and NHL. Our final explanatory variable of interest was the franchise values of the teams in questions. We gathered this data from Forbes and recorded it in dollar value. Our interest in the variable primarily comes from the likelihood that teams with larger budgets likely have the flexibility to contract better players and spend more on facilities than teams that do not have this luxury. 
+
+Our dependant variable, home win percentage, was determined using data from Team Rankings. This site provided the home win-loss record for the 2017 seasons. We then used this information to calculate the win percentage by dividing the wins by total number of games played at home (value between 0 and 1). It is from this data we were able to build our two level model with random intercept. 
 
 #Results
 
@@ -50,7 +57,7 @@ Where $u_i$ ~ $Norm(0, \sigma)$. Our model predicted $\hat \sigma =  0.1434$
 
 
 
-```{r,fig.cap="Caption Goes Here"}
+```{r,fig.cap="Caption Goes Here",results='asis'}
 AllStates <- fifty_states
 AllStates$state <- AllStates$id
 state <- read.csv("StateData.csv")
@@ -73,4 +80,7 @@ ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Happ
 state2 <- state%>%filter(StateAbb!="DC")
 #Average percent home games won by state
 ggplot() + coord_map() + geom_map(data = AllData2, aes(map_id = state2, fill = AvgWin), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Percent Won By State") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Percent", palette = "BuPu") +theme_classic()
+
+
+#stargazer(final.lmer,single.row = TRUE,column.sep.width = "1pt", header = FALSE)
 ```
