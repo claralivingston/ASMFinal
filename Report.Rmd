@@ -44,7 +44,7 @@ state <- state%>%mutate(StateAbb=State,State=ifelse(State=="DC","District of Col
 state <- state%>%mutate(state2=tolower(State))
 AllData <- read.csv("AllData.csv")
 AllData <- AllData%>%mutate(state2=tolower(State),WinPct = HomeWins/HomeGames)
-AllData3 <- AllData%>%select(Happiness,Trump.Vote,Population,Capacity,FranchiseValue,Attendence,WinPct) 
+AllData3 <- AllData%>%select(Happiness,Trump.Vote,Year.opened,Population,Capacity,FranchiseValue,Attendence,WinPct) 
 stargazer(AllData3,header = FALSE)
 ```
 
