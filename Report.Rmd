@@ -92,31 +92,25 @@ AllData$YearFactor <- cut(AllData$Year.opened, breaks = c(0, 1994, 1999,  2004,2
 AllData$PopFactor <- cut(AllData$Population, breaks = c(0, 6782564, 11694664,  21312211,39776831), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
 ```
 
-```{r,fig.cap="Attendance and Capacity by Sport"}
-require(gridExtra)
+```{r,fig.cap="Attendance Against Win Percentage by Sport"}
+ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Attendance by Sport",x="Attendance",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=12))
+```
 
-plot1 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Attendance by Sport",x="Attendance",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=8))
-
-
-
-plot2 <- ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~Type)+geom_smooth(method=lm)+labs(title="Home Win Percentage Against Capacity by Sport",x="Capacity",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=8),axis.text.x = element_text(angle = 90))
-
-grid.arrange(plot1,plot2,ncol=2)
+```{r,fig.cap="Capacity Against Win Percentage by Sport"}
+ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~Type)+geom_smooth(method=lm)+labs(title="Home Win Percentage Against Capacity by Sport",x="Capacity",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=12),axis.text.x = element_text(angle = 90))
 ```
 
 Looking at Figure 2 of the graphs of attendance vs home win percentage, we see the effect varies by type of sport. Baseball, Football and Hockey all see a positive relationship, as attendance increases, win percentage increases. Basketball on the other hand sees a slight decrease, but it is hard to tell if this is significant from the data since for most teams, attendance is high. 
 
 A similar relationship exists with stadium capacity. However since stadium capacity varies by sport.  *should we insert some of the boxplots here or a table of how these vary by sport* it is hard to tell the true effect on win percentage. This graph suggests that Football, Baseball and Basketball have a postive relationship with capacity and win percentage while hockey has a negative.
 
-```{r, fig.cap="Attendance by Capacity Factor and Population by Happiness"}
-require(gridExtra)
-plot3 <- ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Population by Happiness",x="State Population",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=8),axis.text.x = element_text(angle = 90))
-
-plot4 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Attendance by Capacity Quantiles",x="Attendance",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=8))
-
-grid.arrange(plot4, plot3, ncol=2)
+```{r, fig.cap="Population Against Win Percentage by Happiness"}
+ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Population by Happiness",x="State Population",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=12),axis.text.x = element_text(angle = 90))
+```
 
 
+```{r,fig.cap="Attendance Against Win Percentage by Capacity Factor"}
+ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Attendance by Capacity Quantiles",x="Attendance",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=12))
 ```
 
 While both capacity and attendance change their effect on home win percentage with team, we also see an interaction between attendance and capacity. For small capacity stadiums and large stadiums, we see a positive relationship between attendance and home win percentage, while the medium size stadiums don't appear to have a relationship of between attendance and home win percentage. This can be found in Figure 3.
