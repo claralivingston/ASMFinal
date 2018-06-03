@@ -34,15 +34,8 @@ Our dependant variable, home win percentage, was determined using data from Team
 
 In our dataset after removing the Canadian teams, we had 114 different teams to use to investigate how stadium and state factors influenced home game win percentage. Of those 114 teams, 29 were Baseball (MLB), 29 were Basketball (NBA), 32 were Football (NFL), and 24 were Hockey (NHL). 27 states in the United States, including Washington, DC have at least one major league sports team in our dataset.
 
-One of the interesting things we found was that stadium capacity varies by sport, which makes sense since some teams play inside like Hockey and Basketball, while Baseball and Football compete outside in large stadiums. Football has the largest stadiums while Hockey and Basketball have the smallest. In some states, Hockey and Basketball teams actually share the same arena, but since basketball games have floor seats and the ice for hockey takes up more space
-
-```{r,fig.cap="Stadium Capacity by Sport"}
-ggplot(AllData, aes(x=Type, y = Capacity)) + geom_boxplot() + labs(x="Sport", title = "Capacity by Sport")
-```
-
-A summary of the quantitative variables can be found below:
-
-```{r,results='asis',warning=FALSE}
+```{r,fig.cap="Stadium Capacity by Sport", out.width="60%"}
+options(warn = -1)
 state <- read.csv("StateData.csv")
 statestuff <- data.frame(state.abb,state.name)
 colnames(statestuff) <- c("State","StateName")
@@ -53,13 +46,28 @@ state <- state%>%mutate(state2=tolower(State))
 AllData <- read.csv("AllData.csv")
 AllData <- AllData%>%mutate(state2=tolower(State),WinPct = HomeWins/HomeGames)
 AllData3 <- AllData%>%select(Happiness,Trump.Vote,Year.opened,Population,Capacity,FranchiseValue,Attendence,WinPct) 
+ggplot(AllData, aes(x=Type, y = Capacity)) + geom_boxplot() + labs(x="Sport", title = "Capacity by Sport") + theme_classic()
+```
+
+One of the interesting things we found was that stadium capacity varies by sport as seen in Figure 1, which makes sense since some teams play inside like Hockey and Basketball, while Baseball and Football compete outside in large stadiums. Football has the largest stadiums while Hockey and Basketball have the smallest. In some states, Hockey and Basketball teams actually share the same arena, but since basketball games have floor seats and the ice for hockey takes up more space, the basketball games have more seats. Since capacity differs so much for different sports, we would expect different sports to see different effects on win percentage by capacity. This is analyzed further later in the report.
+
+The variable we are most interested in is home winning percentage. When we plot this by sport in Figure 2, we do not see too much variation. For all sports, the mean is higher than 50% suggesting that home-field advantage may exist. Football and Basketball see the most variation in home winning percentages, with the Football team the Cleveland Browns winning 0% of their home games in the 2017 season. Baseball has the lowest mean as well as variation for home game winning percentage. This could be because teams play so many games at home that they are not as determined to win them, while football teams only have 4 home games in a season so they really want to please their fans.
+
+
+```{r,fig.cap="Home Winning Percentage by Sport", out.width="60%"}
+ggplot(AllData, aes(x=Type, y = WinPct)) + geom_boxplot() + labs(x="Sport", title = "Home Win Percentage by Sport")+ theme_classic()
+```
+
+A summary of the quantitative variables can be found below:
+
+```{r,results='asis',warning=FALSE}
 stargazer(AllData3,header = FALSE)
 ```
 
 When investigating what variables may be influential in our model, we started with potential random effects. The final model contained only one random effect, the random intercept for state. To help explain the need for such an effect, we can see from the map in Figure 1 that the average win percentage for the 2017 season across all four major league teams is highly variable between states. It should be noted that states in white do not have major league teams and thus are not represented within the data. States like Illinois, New Jersey, and New Mexico had very low average win percentatges. On the opposite end of the spectrum, states like Nevada and Lousisiana had very high average win percentages. It is this variability that helps justify the addition of a random effect for state, given there are 50 states and the addition of a categorical variable would not be appropriate to justify such difference. 
 
 
-```{r,fig.cap="Average Win Percentage by State",results='asis',warning=FALSE}
+```{r,fig.cap="Average Win Percentage by State",results='asis',warning=FALSE, message=FALSE}
 AllStates <- fifty_states
 AllStates$state <- AllStates$id
 state <- read.csv("StateData.csv")
@@ -98,29 +106,31 @@ AllData$YearFactor <- cut(AllData$Year.opened, breaks = c(0, 1994, 1999,  2004,2
 AllData$PopFactor <- cut(AllData$Population, breaks = c(0, 6782564, 11694664,  21312211,39776831), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
 ```
 
+Figure 4 displays one significant interaction, that attendance vs home win percentage varies by type of sport. Baseball, Football and Hockey all see a positive relationship, as attendance increases, win percentage increases. Basketball on the other hand sees a slight decrease, but it is hard to tell if this is significant from the data since for most teams, attendance is high. 
+
 ```{r,fig.cap="Attendance Against Win Percentage by Sport"}
 ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Attendance by Sport",x="Attendance",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=12))
 ```
-Figure 2 displays one significant interaction, that attendance vs home win percentage varies by type of sport. Baseball, Football and Hockey all see a positive relationship, as attendance increases, win percentage increases. Basketball on the other hand sees a slight decrease, but it is hard to tell if this is significant from the data since for most teams, attendance is high. 
 
+A similar relationship exists with stadium capacity in Figure 5. However since stadium capacity varies by sport, it is hard to tell the true effect on win percentage from these graphs. This graph suggests that Football, Baseball and Basketball have a postive relationship with capacity and win percentage while hockey has a negative.
 
 ```{r,fig.cap="Capacity Against Win Percentage by Sport"}
 ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~Type)+geom_smooth(method=lm)+labs(title="Home Win Percentage Against Capacity by Sport",x="Capacity",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=12),axis.text.x = element_text(angle = 90))
 ```
 
-A similar relationship exists with stadium capacity in Figure 3. However since stadium capacity varies by sport, it is hard to tell the true effect on win percentage from these graphs. This graph suggests that Football, Baseball and Basketball have a postive relationship with capacity and win percentage while hockey has a negative.
+While both capacity and attendance change their effect on home win percentage with team, we also see an interaction between attendance and capacity. For small capacity stadiums and large stadiums, we see a positive relationship between attendance and home win percentage, while the medium size stadiums don't appear to have a relationship of between attendance and home win percentage. This can be found in Figure 6.
 
 ```{r, fig.cap="Population Against Win Percentage by Happiness"}
 ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Population by Happiness",x="State Population",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=12),axis.text.x = element_text(angle = 90))
 ```
 
-While both capacity and attendance change their effect on home win percentage with team, we also see an interaction between attendance and capacity. For small capacity stadiums and large stadiums, we see a positive relationship between attendance and home win percentage, while the medium size stadiums don't appear to have a relationship of between attendance and home win percentage. This can be found in Figure 4.
+Finally to examine the interaction at the state level, for the most part, as population increases for each happiness level, home win percentage decreases. However, for happiness level 3, there is a positive relationship between population and home win percentage as seen in Figure 7.
 
 ```{r,fig.cap="Attendance Against Win Percentage by Capacity Factor"}
 ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Attendance by Capacity Quantiles",x="Attendance",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=12))
 ```
 
-Finally to examine the interaction at the state level, for the most part, as population increases for each happiness level, home win percentage decreases. However, for happiness level 3, there is a positive relationship between population and home win percentage as seen in Figure 5.
+\newpage
 
 Now that we've examined the interactions, we can move onto the final model. The heirarchical form of the final model is below. Estimates for the $\beta$ parameters can be found in Table 2. Note that Sport Baseball is the baseline level.
 
