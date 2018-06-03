@@ -386,9 +386,3 @@ exp(0.15703)
 # increasing the year a stadium opened decreases the odds of winning by 8%, potentially older well established teams have better winning records while newer teams with newer stadiums do not have same legacy
 exp(-0.08524)
 ```
-
-
-
-
-
-
