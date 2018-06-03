@@ -43,7 +43,6 @@ AllData <- AllData %>% mutate(WinPct = HomeWins/HomeGames)
 
 # EDA
 
-In our dataset after removing the Canadian teams, we had 114 different teams to use to investigate how stadium and state factors influenced home game win percentage. Of those 114 teams, 29 were Baseball (MLB), 29 were Basketball (NBA), 32 were Football (NFL), and 24 were Hockey (NHL). 27 states in the United States, including Washington, DC have at least one major league sports team in our dataset.
 ```{r}
 # Team Level Variables
 # Basic EDA
