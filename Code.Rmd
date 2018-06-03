@@ -37,11 +37,8 @@ AllData$FranchiseValue <- as.numeric(gsub(",", "", AllData$FranchiseValue) )
 
 AllData$Happiness2 <- as.factor(AllData$Happiness)
 
-AllData <- AllData%>% mutate(Capacity2=scale(Capacity),Population2=scale(Population),FranchiseValue2=scale(FranchiseValue),Attendence2=scale(Attendence),Trump.Vote2=scale(Trump.Vote),Year.opened2=scale(Year.opened))
+AllData <- AllData%>% mutate(Capacity2=scale(Capacity),Population2=scale(Population),FranchiseValue2=scale(FranchiseValue),Attendence2=scale(Attendence),Trump.Vote2=scale(Trump.Vote),Year.opened2=scale(Year.opened),WinPct = HomeWins/HomeGames)
 
-# making percent of home wins as variable
-
-AllData <- AllData %>% mutate(WinPct = HomeWins/HomeGames)
 write.csv(AllData,"AllData.csv")
 ```
 
