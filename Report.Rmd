@@ -34,6 +34,12 @@ Our dependant variable, home win percentage, was determined using data from Team
 
 In our dataset after removing the Canadian teams, we had 114 different teams to use to investigate how stadium and state factors influenced home game win percentage. Of those 114 teams, 29 were Baseball (MLB), 29 were Basketball (NBA), 32 were Football (NFL), and 24 were Hockey (NHL). 27 states in the United States, including Washington, DC have at least one major league sports team in our dataset.
 
+One of the interesting things we found was that stadium capacity varies by sport, which makes sense since some teams play inside like Hockey and Basketball, while Baseball and Football compete outside in large stadiums. Football has the largest stadiums while Hockey and Basketball have the smallest. In some states, Hockey and Basketball teams actually share the same arena, but since basketball games have floor seats and the ice for hockey takes up more space
+
+```{r,fig.cap="Stadium Capacity by Sport"}
+ggplot(AllData, aes(x=Type, y = Capacity)) + geom_boxplot() + labs(x="Sport", title = "Capacity by Sport")
+```
+
 A summary of the quantitative variables can be found below:
 
 ```{r,results='asis',warning=FALSE}
@@ -145,29 +151,3 @@ Moving onto state level effects, increasing a state's population by one standard
 
 *for discussion potentially older well established teams have better winning records while newer teams with newer stadiums do not have same legacy *
 *for disscussion this could be because these are smaller more intimate venues so attendence matters more*
-
-#Appendix
-
-
-
-
-```{r,fig.cap="Caption Goes Here",results='asis',warning=FALSE}
-AllStates <- fifty_states
-AllStates$state <- AllStates$id
-state <- read.csv("StateData.csv")
-statestuff <- data.frame(state.abb,state.name)
-colnames(statestuff) <- c("State","StateName")
-state <- full_join(state,statestuff)
-state$StateName <- as.character(state$StateName)
-state <- state%>%mutate(StateAbb=State,State=ifelse(State=="DC","District of Columbia",StateName))
-state <- state%>%mutate(state2=tolower(State))
-AllData <- read.csv("AllData.csv")
-AllData <- AllData%>%mutate(state2=tolower(State),WinPct = HomeWins/HomeGames)
-AllData2 <- AllData%>%group_by(state2)%>%summarise(AvgWin=mean(WinPct))
-
-#Population
-#ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Population), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Population By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Population", palette = "BuPu") +theme_classic()
-
-#Happiness
-#ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Happiness), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Happiness By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Happiness", palette = "BuPu") +theme_classic()
-```
