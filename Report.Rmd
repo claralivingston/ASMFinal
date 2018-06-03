@@ -70,7 +70,7 @@ AllData2 <- AllData%>%group_by(state2)%>%summarise(AvgWin=mean(WinPct))
 
 state2 <- state%>%filter(StateAbb!="DC")
 #Average percent home games won by state
-ggplot() + coord_map() + geom_map(data = AllData2, aes(map_id = state2, fill = AvgWin), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Percent Won By State") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Percent", palette = "BuPu") +theme_classic()
+ggplot() + coord_map() + geom_map(data = AllData2, aes(map_id = state2, fill = AvgWin), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Average Percent Won By State") + labs(x= "Longitute", y  = "Latitude") +scale_fill_gradient(name = "Percent", low="#e6e6ff",high="#000099") +theme_classic()
 ```
 
 When determining random effects to use in the model, we opted not to include sport type. From our EDA it became clear that the sport had a large influence on win percentage on its own and whne interacting with other terms in our model. While a random effect might capture some of this effect, given we are interested in how influential our explanatory variables are, as it relates to win percentage, we believe we could garner more information if sport were a fixed effects variable in the model. 
@@ -94,18 +94,25 @@ AllData$YearFactor <- cut(AllData$Year.opened, breaks = c(0, 1994, 1999,  2004,2
 AllData$PopFactor <- cut(AllData$Population, breaks = c(0, 6782564, 11694664,  21312211,39776831), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
 ```
 
-```{r}
+```{r,fig.cap="Attendance and Capacity by Sport"}
 require(gridExtra)
 
-plot1 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm)
+plot1 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Attendance by Sport",x="Attendance",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=8))
 
-plot2 <- ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~Type)+geom_smooth(method=lm)
 
-plot3 <- ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm)
 
-plot4 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm)
+plot2 <- ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~Type)+geom_smooth(method=lm)+labs(title="Home Win Percentage Against Capacity by Sport",x="Capacity",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=8),axis.text.x = element_text(angle = 90))
 
-grid.arrange(plot1, plot2, plot3, plot4,ncol=2)
+grid.arrange(plot1,plot2,ncol=2)
+```
+
+```{r, fig.cap="Population by Happiness and Attendance by Capacity Factor"}
+require(gridExtra)
+plot3 <- ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Population by Happiness",x="State Population",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=8),axis.text.x = element_text(angle = 90))
+
+plot4 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Attendance by Capacity Quantiles",x="Attendance",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=8))
+
+grid.arrange(plot3, plot4, ncol=2)
 ```
 
 
