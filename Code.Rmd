@@ -367,7 +367,7 @@ exp(0.62979*0.043) # 1.027 times more hockey, so increase one and the effect of 
 
 # Franchise value interpretations
 sd(AllData$FranchiseValue)
-# increasing franchise value by 93,5646,568 increases odds of winning at home by 14%
+# increasing franchise value by 935,646,568 increases odds of winning at home by 14%
 exp(0.13274) 
 
 # population interpretations
