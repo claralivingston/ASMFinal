@@ -10,6 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(ggplot2)
 library(lme4)
+library(fiftystater)
+library(stargazer)
+library(gridExtra)
 ```
 
 #Data Join
@@ -40,6 +43,7 @@ AllData <- AllData %>% mutate(WinPct = HomeWins/HomeGames)
 
 # EDA
 
+In our dataset after removing the Canadian teams, we had 114 different teams to use to investigate how stadium and state factors influenced home game win percentage. Of those 114 teams, 29 were Baseball (MLB), 29 were Basketball (NBA), 32 were Football (NFL), and 24 were Hockey (NHL). 27 states in the United States, including Washington, DC have at least one major league sports team in our dataset.
 ```{r}
 # Team Level Variables
 # Basic EDA
@@ -68,6 +72,37 @@ ggplot(AllData, aes(x=Type, y = Attendence)) + geom_boxplot()
 hist(AllData$Year.opened)
 tapply(AllData$Capacity, AllData$Year.opened, mean)
 tapply(AllData$Year.opened, AllData$Type,mean) # hockey and basketball have newest stadiums and baseball and football have older, with baseball being oldest
+
+
+```
+
+EDA for State Level Variables
+```{r,fig.cap="Caption Goes Here",results='asis',warning=FALSE}
+# states with teams
+length(unique(AllData$State))
+
+#Variation between states win pct
+AllStates <- fifty_states
+AllStates$state <- AllStates$id
+state <- read.csv("StateData.csv")
+statestuff <- data.frame(state.abb,state.name)
+colnames(statestuff) <- c("State","StateName")
+state <- full_join(state,statestuff)
+state$StateName <- as.character(state$StateName)
+state <- state%>%mutate(StateAbb=State,State=ifelse(State=="DC","District of Columbia",StateName))
+state <- state%>%mutate(state2=tolower(State))
+AllData <- read.csv("AllData.csv")
+AllData <- AllData%>%mutate(state2=tolower(State),WinPct = HomeWins/HomeGames)
+AllData2 <- AllData%>%group_by(state2)%>%summarise(AvgWin=mean(WinPct))
+
+#Population
+ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Population), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Population By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Population", palette = "BuPu") +theme_classic()
+
+#Happiness
+ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Happiness), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Happiness By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Happiness", palette = "BuPu") +theme_classic()
+
+#Trump Vote
+ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Trump.Vote), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Trump Vote By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Vote", palette = "BuPu") +theme_classic()
 ```
 
 # Potential Interactions
