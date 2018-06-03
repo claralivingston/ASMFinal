@@ -73,26 +73,43 @@ state2 <- state%>%filter(StateAbb!="DC")
 ggplot() + coord_map() + geom_map(data = AllData2, aes(map_id = state2, fill = AvgWin), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Percent Won By State") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Percent", palette = "BuPu") +theme_classic()
 ```
 
+When determining random effects to use in the model, we opted not to include sport type. From our EDA it became clear that the sport had a large influence on win percentage on its own and whne interacting with other terms in our model. While a random effect might capture some of this effect, given we are interested in how influential our explanatory variables are, as it relates to win percentage, we believe we could garner more information if sport were a fixed effects variable in the model. 
+
+From initally data analysis, we discovered fourteen possible interactions. These included six interactions at the stadium/team level, all three at the state level, and five between levels. Of these fourteen interactions, only four were significant in the final model. These interactions are between sport type and attendance, sport type and capacity, state population and happiness, and capacity and attendence.
 
 EDA of the final model interactions can be found below:
 
 ```{r}
-#require(gridExtra)
-#plot1 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm)
+# make capacity a factor for data exploration
+AllData$Capacity <- as.numeric(AllData$Capacity)
+AllData$CapFactor <- cut(AllData$Capacity, breaks = c(0, 18578, 27000,  62250,100000), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
 
-#plot2 <- ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~Type)+geom_smooth(method=lm)
+# make franchise a factor for data exploration
+AllData$FranchiseValue <- as.numeric(AllData$FranchiseValue)
+AllData$FranchiseFactor <- cut(AllData$FranchiseValue, breaks = c(0, 1.000e+09, 1.350e+09,  2.300e+09,4.900e+09), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
 
-#plot3 <- ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm)
+# make attendance a factor for data exploration
+AllData$YearFactor <- cut(AllData$Year.opened, breaks = c(0, 1994, 1999,  2004,2019), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
 
-#plot4 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm)
-
-#grid.arrange(plot1, plot2,ncol=2)
-#grid.arrange(plot3,plot4,ncol=2)
+AllData$PopFactor <- cut(AllData$Population, breaks = c(0, 6782564, 11694664,  21312211,39776831), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
 ```
 
-- discussion of choosing to add type/sport as a variable rather than random effect
-- fixed effects and why we chose the interactions we did, with support from eda plots
-- discuss why we ended up not using the interactions we thought might be influential
+```{r}
+require(gridExtra)
+
+plot1 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm)
+
+plot2 <- ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~Type)+geom_smooth(method=lm)
+
+plot3 <- ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm)
+
+plot4 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm)
+
+grid.arrange(plot1, plot2, plot3, plot4,ncol=2)
+```
+
+
+
 
 To discover the relationship between home game winning percentages and the variables of interest, we used logistic binomial regression. We observed variation in home win percentage by state, but did not want to include a variable for each state, we decided to include state as a random effect in our model. 
 

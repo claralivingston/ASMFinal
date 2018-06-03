@@ -30,7 +30,6 @@ team <- team%>%mutate(State=ifelse(State=="District of Columbia","D.C.",State))
 state <- state%>%mutate(State1=State,State=StateName)
 AllData <- right_join(state,team)
 AllData <- AllData%>%filter(!is.na(Happiness))
-write.csv(AllData,"AllData.csv")
 
 # make strings numeric
 AllData$Capacity <- as.numeric(gsub(",", "", AllData$Capacity) )
@@ -39,6 +38,7 @@ AllData$FranchiseValue <- as.numeric(gsub(",", "", AllData$FranchiseValue) )
 # making percent of home wins as variable
 
 AllData <- AllData %>% mutate(WinPct = HomeWins/HomeGames)
+write.csv(AllData,"AllData.csv")
 ```
 
 # EDA
@@ -229,6 +229,7 @@ ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Trump
 ```{r}
 #Scaling Variables
 AllData$Happiness2 <- as.factor(AllData$Happiness)
+
 AllData <- AllData%>% mutate(Capacity2=scale(Capacity),Population2=scale(Population),FranchiseValue2=scale(FranchiseValue),Attendence2=scale(Attendence),Trump.Vote2=scale(Trump.Vote),Year.opened2=scale(Year.opened))
 
 #Random Intercept Check

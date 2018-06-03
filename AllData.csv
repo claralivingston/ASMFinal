@@ -1,115 +1,115 @@
-"","State","Happiness","Trump.Vote","Population","StateName","State1","Stadium","Capacity","City","Year.opened","Type","Tenant","HomeWins","HomeGames","FranchiseValue","Attendence"
-"1","California",4,31.5,39776830,"California","CA","Oakland–Alameda County Coliseum","63,026.00","Oakland",1966,"Baseball","Oakland Athletics",35,81,"1,020,000,000",48.3
-"2","California",4,31.5,39776830,"California","CA","Dodger Stadium","56,000.00","Los Angeles",1962,"Baseball","Los Angeles Dodgers",63,89,"3,000,000,000",82.5
-"3","Colorado",5,43.3,5684203,"Colorado","CO","Coors Field","50,445.00","Denver",1995,"Baseball","Colorado Rockies",46,81,"1,100,000,000",68
-"4","New York",2,36.5,19862512,"New York","NY","Yankee Stadium","50,291.00","Bronx",2009,"Baseball","New York Yankees",57,87,"4,000,000,000",82.3
-"5","Texas",5,52.2,28704330,"Texas","TX","Globe Life Park","49,115.00","Arlington",1994,"Baseball","Texas Rangers",41,81,"1,600,000,000",56.3
-"6","Arizona",5,48.1,7123898,"Arizona","AZ","Chase Field","49,033.00","Phoenix",1998,"Baseball","Arizona Diamondbacks",53,83,"1,210,000,000",52.7
-"7","Maryland",2,33.9,6079602,"Maryland","MD","Oriole Park at Camden Yards","48,876.00","Baltimore",1992,"Baseball","Baltimore Orioles",46,81,"1,200,000,000",42.7
-"8","Washington",3,36.8,7530552,"Washington","WA","Safeco Field","47,116.00","Seattle",1999,"Baseball","Seattle Mariners",40,81,"1,450,000,000",53
-"9","Missouri",2,56.4,6135888,"Missouri","MO","Busch Stadium","46,861.00","St. Louis",2006,"Baseball","St. Louis Cardinals",44,81,"1,900,000,000",93.2
-"10","California",4,31.5,39776830,"California","CA","Angel Stadium of Anaheim","45,050.00","Anaheim",1966,"Baseball","Los Angeles Angels",43,81,"1,800,000,000",82.5
-"11","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","Citizens Bank Park","43,647.00","Philadelphia",2004,"Baseball","Philadelphia Phillies",39,81,"1,700,000,000",57.6
-"12","California",4,31.5,39776830,"California","CA","Petco Park","46,000.00","San Diego",2004,"Baseball","San Diego Padres",43,81,"1,270,000,000",66.6
-"13","Ohio",1,51.3,11694664,"Ohio","OH","Great American Ball Park","42,059.00","Cincinnati",2003,"Baseball","Cincinnati Reds",39,81,"1,010,000,000",42.2
-"14","Wisconsin",3,47.2,5818049,"Wisconsin","WI","Miller Park","41,900.00","Milwaukee",2001,"Baseball","Milwaukee Brewers",43,80,"1,030,000,000",78
-"15","D.C.",2,4.1,703608,"D.C.","DC","Nationals Park","41,222.00","Washington, D.C.",2008,"Baseball","Washington Nationals",48,84,"1,675,000,000",70.1
-"16","New York",2,36.5,19862512,"New York","NY","Citi Field","41,800.00","Flushing",2009,"Baseball","New York Mets",37,81,"2,100,000,000",69.5
-"17","Michigan",2,47.3,9991177,"Michigan","MI","Comerica Park","41,782.00","Detroit",2000,"Baseball","Detroit Tigers",34,81,"1,225,000,000",49.7
-"18","California",4,31.5,39776830,"California","CA","AT&T Park","41,503.00","San Francisco",2000,"Baseball","San Francisco Giants",38,81,"2,850,000,000",92.7
-"19","Illinois",2,38.4,12769320,"Illinois","IL","Wrigley Field","41,160.00","Chicago",1914,"Baseball","Chicago Cubs",50,86,"2,900,000,000",90.5
-"20","Texas",5,52.2,28704330,"Texas","TX","Minute Maid Park","40,950.00","Houston",2000,"Baseball","Houston Astros",55,87,"1,650,000,000",86.8
-"21","Illinois",2,38.4,12769320,"Illinois","IL","Guaranteed Rate Field","40,615.00","Chicago",1991,"Baseball","Chicago White Sox",39,81,"1,500,000,000",39.4
-"22","Minnesota",5,44.9,5628162,"Minnesota","MN","Target Field[40]","39,504.00","Minneapolis",2010,"Baseball","Minnesota Twins",41,81,"1,150,000,000",61
-"23","Missouri",2,56.4,6135888,"Missouri","MO","Ewing M. Kauffman Stadium","39,000.00","Kansas City",1973,"Baseball","Kansas City Royals",43,81,"1,015,000,000",52.1
-"24","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","PNC Park","38,496.00","Pittsburgh",2001,"Baseball","Pittsburgh Pirates",44,81,"1,260,000,000",44.5
-"25","Ohio",1,51.3,11694664,"Ohio","OH","Progressive Field","35,051.00","Cleveland",1994,"Baseball","Cleveland Indians",51,84,"1,045,000,000",43.8
-"26","Massachusetts",4,32.8,6895917,"Massachusetts","MA","Fenway Park","37,731.00","Boston",1912,"Baseball","Boston Red Sox",49,83,"2,800,000,000",91.3
-"27","Florida",4,48.6,21312211,"Florida","FL","Marlins Park","37,000.00","Miami",2012,"Baseball","Miami Marlins",42,88,"1,000,000,000",28.2
-"28","Florida",4,48.6,21312211,"Florida","FL","Tropicana Field","36,973.00","St. Petersburg",1990,"Baseball","Tampa Bay Rays",41,78,"900,000,000",41.3
-"29","Georgia",3,50.4,10545138,"Georgia","GA","SunTrust Park","41,149.00","Atlanta",2017,"Baseball","Atlanta Braves",37,81,"1,625,000,000",76.8
-"30","Florida",4,48.6,21312211,"Florida","FL","American Airlines Arena","19,600.00","Miami",1999,"Basketball","Miami Heat",26,43,"1,700,000,000",100.2
-"31","Texas",5,52.2,28704330,"Texas","TX","American Airlines Center","19,200.00","Dallas",2001,"Basketball","Dallas Mavericks",15,41,"1,900,000,000",103.1
-"32","Florida",4,48.6,21312211,"Florida","FL","Amway Center","18,846.00","Orlando",2010,"Basketball","Orlando Magic",17,41,"1,225,000,000",94.2
-"33","Texas",5,52.2,28704330,"Texas","TX","AT&T Center","18,418.00","San Antonio",2002,"Basketball","San Antonio Spurs",34,43,"1,550,000,000",99.2
-"34","Indiana",1,56.5,6699629,"Indiana","IN","Bankers Life Fieldhouse","17,923.00","Indianapolis",1999,"Basketball","Indiana Pacers",29,44,"1,175,000,000",91.9
-"35","New York",2,36.5,19862512,"New York","NY","Barclays Center","17,732.00","Brooklyn",2012,"Basketball","Brooklyn Nets",14,39,"2,300,000,000",85.2
-"36","D.C.",2,4.1,703608,"D.C.","DC","Capital One Arena","20,356.00","Washington",1997,"Basketball","Washington Wizards",25,44,"1,350,000,000",83.8
-"37","Oklahoma",1,65.3,3940521,"Oklahoma","OK","Chesapeake Energy Arena","18,203.00","Oklahoma City",2002,"Basketball","Oklahoma City Thunder",29,44,"1,250,000,000",100
-"38","Tennessee",2,60.7,6782564,"Tennessee","TN","FedExForum","18,119.00","Memphis",2004,"Basketball","Memphis Grizzlies",16,41,"1,025,000,000",91.2
-"39","California",4,31.5,39776830,"California","CA","Golden 1 Center","17,608.00","Sacramento",2016,"Basketball","Sacramento Kings",14,41,"1,375,000,000",100.6
-"40","Michigan",2,47.3,9991177,"Michigan","MI","Little Caesars Arena","20,491.00","Detroit",2017,"Basketball","Detroit Pistons",25,41,"1,100,000,000",72.4
-"41","New York",2,36.5,19862512,"New York","NY","Madison Square Garden","19,812.00","New York",1968,"Basketball","New York Knicks",19,41,"3,600,000,000",99.8
-"42","Oregon",3,39.1,4199563,"Oregon","OR","Moda Center","19,980.00","Portland",1995,"Basketball","Portland Trail Blazers",28,43,"1,300,000,000",99.4
-"43","California",4,31.5,39776830,"California","CA","Oracle Arena","19,596.00","Oakland",1966,"Basketball","Golden State Warriors",37,50,"3,100,000,000",100
-"44","Colorado",5,43.3,5684203,"Colorado","CO","Pepsi Center","19,155.00","Denver",1999,"Basketball","Denver Nuggets",31,41,"1,125,000,000",77.1
-"45","Georgia",3,50.4,10545138,"Georgia","GA","Philips Arena","18,118.00","Atlanta",1999,"Basketball","Atlanta Hawks",16,41,"1,150,000,000",85.2
-"46","Ohio",1,51.3,11694664,"Ohio","OH","Quicken Loans Arena","20,562.00","Cleveland",1994,"Basketball","Cleveland Cavaliers",37,50,"1,325,000,000",100
-"47","Louisiana",1,58.1,4682509,"Louisiana","LA","Smoothie King Center","16,867.00","New Orleans",1999,"Basketball","New Orleans Pelicans",27,45,"1,000,000,000",94.1
-"48","North Carolina",3,49.8,10390149,"North Carolina","NC","Spectrum Center","19,077.00","Charlotte",2005,"Basketball","Charlotte Hornets",21,41,"1,050,000,000",90.9
-"49","California",4,31.5,39776830,"California","CA","Staples Center","19,060.00","Los Angeles",1999,"Basketball","Los Angeles Clippers",22,41,"2,150,000,000",100.1
-"50","California",4,31.5,39776830,"California","CA","Staples Center","18,997.00","Los Angeles",1999,"Basketball","Los Angeles Lakers",20,41,"3,300,000,000",99.4
-"51","Arizona",5,48.1,7123898,"Arizona","AZ","Talking Stick Resort Arena","18,422.00","Phoenix",1992,"Basketball","Phoenix Suns",9,41,"1,280,000,000",93.8
-"52","Minnesota",5,44.9,5628162,"Minnesota","MN","Target Center","19,356.00","Minneapolis",1990,"Basketball","Minnesota Timberwolves",31,43,"1,060,000,000",76.5
-"53","Massachusetts",4,32.8,6895917,"Massachusetts","MA","TD Garden","18,624.00","Boston",1995,"Basketball","Boston Celtics",37,52,"2,500,000,000",99.6
-"54","Texas",5,52.2,28704330,"Texas","TX","Toyota Center","18,055.00","Houston",2003,"Basketball","Houston Rockets",41,50,"2,200,000,000",94.1
-"55","Illinois",2,38.4,12769320,"Illinois","IL","United Center","20,917.00","Chicago",1994,"Basketball","Chicago Bulls",17,41,"2,600,000,000",103.6
-"56","Utah",4,45.1,3159345,"Utah","UT","Vivint Smart Home Arena","18,303.00","Salt Lake City",1991,"Basketball","Utah Jazz",31,46,"1,200,000,000",98.8
-"57","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","Wells Fargo Center","20,328.00","Philadelphia",1996,"Basketball","Philadelphia 76ers",33,45,"1,180,000,000",85.3
-"58","Wisconsin",3,47.2,5818049,"Wisconsin","WI","Wisconsin Entertainment and Sports Center","17,500.00","Milwaukee",2018,"Basketball","Milwaukee Bucks",28,44,"1,075,000,000",84.6
-"59","Texas",5,52.2,28704330,"Texas","TX","AT&T Stadium","100,000.00","Arlington",2009,"Football","Dallas Cowboys",3,8,"4800000000",92.7
-"60","New Jersey",3,41,9032872,"New Jersey","NJ","MetLife Stadium","82,500.00","East Rutherford",2010,"Football","New York Giants",2,8,"3300000000",92.7
-"61","New Jersey",3,41,9032872,"New Jersey","NJ","MetLife Stadium","82,500.00","East Rutherford",2010,"Football","New York Jets",4,8,"2750000000",94
-"62","Maryland",2,33.9,6079602,"Maryland","MD","FedExField","82,000.00","Landover",1997,"Football","Washington Redskins",5,8,"3100000000",88.4
-"63","Wisconsin",3,47.2,5818049,"Wisconsin","WI","Lambeau Field","81,435.00","Green Bay",1957,"Football","Green Bay Packers",4,8,"2550000000",106.8
-"64","Florida",4,48.6,21312211,"Florida","FL","TIAA Bank Field","76,867.00","Jacksonville",1949,"Football","Jacksonville Jaguars",6,8,"2075000000",95.6
-"65","Missouri",2,56.4,6135888,"Missouri","MO","Arrowhead Stadium","76,416.00","Kansas City",1972,"Football","Kansas City Chiefs",6,9,"2100000000",97
-"66","Colorado",5,43.3,5684203,"Colorado","CO","Sports Authority Field at Mile High","76,125.00","Denver",2001,"Football","Denver Broncos",4,8,"2600000000",100.3
-"67","North Carolina",3,49.8,10390149,"North Carolina","NC","Bank of America Stadium","75,419.00","Charlotte",1996,"Football","Carolina Panthers",6,8,"2300000000",99.8
-"68","Louisiana",1,58.1,4682509,"Louisiana","LA","Mercedes-Benz Superdome","73,370.00","New Orleans",1975,"Football","New Orleans Saints",8,9,"2000000000",95.6
-"69","New York",2,36.5,19862512,"New York","NY","New Era Field","71,608.00","Orchard Park",1973,"Football","Buffalo Bills",6,8,"1600000000",91.4
-"70","Texas",5,52.2,28704330,"Texas","TX","NRG Stadium","71,500.00","Houston",2002,"Football","Houston Texans",3,8,"2800000000",101
-"71","Maryland",2,33.9,6079602,"Maryland","MD","M&T Bank Stadium","71,008.00","Baltimore",1998,"Football","Baltimore Ravens",5,8,"2500000000",99.4
-"72","Tennessee",2,60.7,6782564,"Tennessee","TN","Nissan Stadium","68,798.00","Nashville",1999,"Football","Tennessee Titans",6,8,"2050000000",95
-"73","Massachusetts",4,32.8,6895917,"Massachusetts","MA","Gillette Stadium","68,756.00","Foxborough",2002,"Football","New England Patriots",8,10,"3700000000",100
-"74","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","Lincoln Financial Field","68,532.00","Philadelphia",2003,"Football","Philadelphia Eagles",9,10,"2650000000",100
-"75","California",4,31.5,39776830,"California","CA","Levi's Stadium","68,500.00","Santa Clara",2014,"Football","San Francisco 49ers",3,8,"3050000000",102.4
-"76","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","Heinz Field","68,400.00","Pittsburgh",2001,"Football","Pittsburgh Steelers",6,9,"2450000000",91.3
-"77","Ohio",1,51.3,11694664,"Ohio","OH","FirstEnergy Stadium","67,431.00","Cleveland",1999,"Football","Cleveland Browns",0,7,"1950000000",87.3
-"78","Washington",3,36.8,7530552,"Washington","WA","CenturyLink Field","67,000.00","Seattle",2002,"Football","Seattle Seahawks",4,8,"2425000000",102.9
-"79","Minnesota",5,44.9,5628162,"Minnesota","MN","U.S. Bank Stadium","66,655.00","Minneapolis",2016,"Football","Minnesota Vikings",8,9,"2400000000",91.4
-"80","Florida",4,48.6,21312211,"Florida","FL","Raymond James Stadium","65,857.00","Tampa",1998,"Football","Tampa Bay Buccaneers",4,8,"1975000000",91
-"81","Ohio",1,51.3,11694664,"Ohio","OH","Paul Brown Stadium","65,790.00","Cincinnati",2000,"Football","Cincinnati Bengals",4,8,"1800000000",81.3
-"82","Florida",4,48.6,21312211,"Florida","FL","Hard Rock Stadium","65,326.00","Miami Gardens",1987,"Football","Miami Dolphins",4,7,"2575000000",103.5
-"83","Michigan",2,47.3,9991177,"Michigan","MI","Ford Field","65,000.00","Detroit",2002,"Football","Detroit Lions",4,8,"1700000000",98.7
-"84","California",4,31.5,39776830,"California","CA","Oakland–Alameda County Coliseum","63,026.00","Oakland",1966,"Football","Oakland Raiders",4,7,"2380000000",91.5
-"85","Indiana",1,56.5,6699629,"Indiana","IN","Lucas Oil Stadium","63,000.00","Indianapolis",2008,"Football","Indianapolis Colts",3,8,"2375000000",100.7
-"86","Illinois",2,38.4,12769320,"Illinois","IL","Soldier Field","61,500.00","Chicago",1924,"Football","Chicago Bears",3,8,"2850000000",99.4
-"87","Florida",4,48.6,21312211,"Florida","FL","Amalie Arena","19,092.00","Tampa",1996,"Hockey","Tampa Bay Lightning",29,41,"390,000,000",100
-"88","Texas",5,52.2,28704330,"Texas","TX","American Airlines Center","18,532.00","Dallas",2001,"Hockey","Dallas Stars",26,41,"515,000,000",97.7
-"89","Florida",4,48.6,21312211,"Florida","FL","BB&T Center","19,250.00","Sunrise",1998,"Hockey","Florida Panthers",27,41,"305,000,000",81.3
-"90","New York",2,36.5,19862512,"New York","NY","Barclays Center","15,795.00","Brooklyn",2012,"Hockey","New York Islanders",19,41,"395,000,000",75.9
-"91","Tennessee",2,60.7,6782564,"Tennessee","TN","Bridgestone Arena","17,113.00","Nashville",1996,"Hockey","Nashville Predators",28,41,"380,000,000",101.1
-"92","D.C.",2,4.1,703608,"D.C.","DC","Capital One Arena","18,506.00","Washington",1997,"Hockey","Washington Capitals",28,41,"625,000,000",104
-"93","Arizona",5,48.1,7123898,"Arizona","AZ","Gila River Arena","17,125.00","Glendale",2003,"Hockey","Arizona Coyotes",16,41,"300,000,000",76.2
-"94","California",4,31.5,39776830,"California","CA","Honda Center","17,174.00","Anaheim",1993,"Hockey","Anaheim Ducks",26,41,"460,000,000",96.9
-"95","New York",2,36.5,19862512,"New York","NY","KeyBank Center","19,070.00","Buffalo",1996,"Hockey","Buffalo Sabres",11,41,"350,000,000",99.8
-"96","Michigan",2,47.3,9991177,"Michigan","MI","Little Caesars Arena","19,515.00","Detroit",2017,"Hockey","Detroit Red Wings",16,41,"700,000,000",100
-"97","New York",2,36.5,19862512,"New York","NY","Madison Square Garden","18,006.00","New York",1968,"Hockey","New York Rangers",21,41,"1,500,000,000",99.1
-"98","Ohio",1,51.3,11694664,"Ohio","OH","Nationwide Arena","18,144.00","Columbus",2000,"Hockey","Columbus Blue Jackets",26,41,"315,000,000",91.8
-"99","Colorado",5,43.3,5684203,"Colorado","CO","Pepsi Center","17,809.00","Denver",1999,"Hockey","Colorado Avalanche",28,41,"385,000,000",87.1
-"100","North Carolina",3,49.8,10390149,"North Carolina","NC","PNC Arena","18,680.00","Raleigh",1999,"Hockey","Carolina Hurricanes",19,41,"370,000,000",71.3
-"101","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","PPG Paints Arena","18,387.00","Pittsburgh",2010,"Hockey","Pittsburgh Penguins",30,41,"650,000,000",101
-"102","New Jersey",3,41,9032872,"New Jersey","NJ","Prudential Center","16,514.00","Newark",2007,"Hockey","New Jersey Devils",23,41,"400,000,000",92
-"103","California",4,31.5,39776830,"California","CA","SAP Center","17,562.00","San Jose",1993,"Hockey","San Jose Sharks",25,41,"490,000,000",98.9
-"104","Missouri",2,56.4,6135888,"Missouri","MO","Scottrade Center","18,724.00","St. Louis",1994,"Hockey","St. Louis Blues",24,41,"450,000,000",95.9
-"105","California",4,31.5,39776830,"California","CA","Staples Center","18,230.00","Los Angeles",1999,"Hockey","Los Angeles Kings",23,41,"750,000,000",100.1
-"106","Massachusetts",4,32.8,6895917,"Massachusetts","MA","TD Garden","17,565.00","Boston",1995,"Hockey","Boston Bruins",28,41,"890,000,000",100
-"107","Nevada",2,45.5,3056824,"Nevada","NV","T-Mobile Arena","17,368.00","Paradise",2016,"Hockey","Vegas Golden Knights",29,41,"500,000,000",103.9
-"108","Illinois",2,38.4,12769320,"Illinois","IL","United Center","19,717.00","Chicago",1994,"Hockey","Chicago Blackhawks",18,41,"1,000,000,000",109.8
-"109","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","Wells Fargo Center","19,543.00","Philadelphia",1996,"Hockey","Philadelphia Flyers",22,41,"740,000,000",99.9
-"110","Minnesota",5,44.9,5628162,"Minnesota","MN","Xcel Energy Center","17,954.00","Saint Paul",2000,"Hockey","Minnesota Wild",27,41,"440,000,000",106
-"111","California",4,31.5,39776830,"California","CA","Los Angeles Memorial Coliseum","93,607.00","Los Angeles",1923,"Football","Los Angeles Rams",3,8,"3000000000",67.7
-"112","Georgia",3,50.4,10545138,"Georgia","GA","Mercedes-Benz Stadiumdouble-dagger","71,000.00","Atlanta",2017,"Football","Atlanta Falcons",5,8,"2475000000",95.9
-"113","California",4,31.5,39776830,"California","CA","StubHub Center","27,000.00","Carson",2003,"Football","Los Angeles Chargers",5,8,"2275000000",93.8
-"114","Arizona",5,48.1,7123898,"Arizona","AZ","University of Phoenix Stadiumdouble-dagger","63,400.00","Glendale",2006,"Football","Arizona Cardinals",5,8,"2150000000",98.8
+"","State","Happiness","Trump.Vote","Population","StateName","State1","Stadium","Capacity","City","Year.opened","Type","Tenant","HomeWins","HomeGames","FranchiseValue","Attendence","WinPct"
+"1","California",4,31.5,39776830,"California","CA","Oakland–Alameda County Coliseum",63026,"Oakland",1966,"Baseball","Oakland Athletics",35,81,1.02e+09,48.3,0.432098765432099
+"2","California",4,31.5,39776830,"California","CA","Dodger Stadium",56000,"Los Angeles",1962,"Baseball","Los Angeles Dodgers",63,89,3e+09,82.5,0.707865168539326
+"3","Colorado",5,43.3,5684203,"Colorado","CO","Coors Field",50445,"Denver",1995,"Baseball","Colorado Rockies",46,81,1.1e+09,68,0.567901234567901
+"4","New York",2,36.5,19862512,"New York","NY","Yankee Stadium",50291,"Bronx",2009,"Baseball","New York Yankees",57,87,4e+09,82.3,0.655172413793103
+"5","Texas",5,52.2,28704330,"Texas","TX","Globe Life Park",49115,"Arlington",1994,"Baseball","Texas Rangers",41,81,1.6e+09,56.3,0.506172839506173
+"6","Arizona",5,48.1,7123898,"Arizona","AZ","Chase Field",49033,"Phoenix",1998,"Baseball","Arizona Diamondbacks",53,83,1.21e+09,52.7,0.63855421686747
+"7","Maryland",2,33.9,6079602,"Maryland","MD","Oriole Park at Camden Yards",48876,"Baltimore",1992,"Baseball","Baltimore Orioles",46,81,1.2e+09,42.7,0.567901234567901
+"8","Washington",3,36.8,7530552,"Washington","WA","Safeco Field",47116,"Seattle",1999,"Baseball","Seattle Mariners",40,81,1.45e+09,53,0.493827160493827
+"9","Missouri",2,56.4,6135888,"Missouri","MO","Busch Stadium",46861,"St. Louis",2006,"Baseball","St. Louis Cardinals",44,81,1.9e+09,93.2,0.54320987654321
+"10","California",4,31.5,39776830,"California","CA","Angel Stadium of Anaheim",45050,"Anaheim",1966,"Baseball","Los Angeles Angels",43,81,1.8e+09,82.5,0.530864197530864
+"11","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","Citizens Bank Park",43647,"Philadelphia",2004,"Baseball","Philadelphia Phillies",39,81,1.7e+09,57.6,0.481481481481481
+"12","California",4,31.5,39776830,"California","CA","Petco Park",46000,"San Diego",2004,"Baseball","San Diego Padres",43,81,1.27e+09,66.6,0.530864197530864
+"13","Ohio",1,51.3,11694664,"Ohio","OH","Great American Ball Park",42059,"Cincinnati",2003,"Baseball","Cincinnati Reds",39,81,1.01e+09,42.2,0.481481481481481
+"14","Wisconsin",3,47.2,5818049,"Wisconsin","WI","Miller Park",41900,"Milwaukee",2001,"Baseball","Milwaukee Brewers",43,80,1.03e+09,78,0.5375
+"15","D.C.",2,4.1,703608,"D.C.","DC","Nationals Park",41222,"Washington, D.C.",2008,"Baseball","Washington Nationals",48,84,1.675e+09,70.1,0.571428571428571
+"16","New York",2,36.5,19862512,"New York","NY","Citi Field",41800,"Flushing",2009,"Baseball","New York Mets",37,81,2.1e+09,69.5,0.45679012345679
+"17","Michigan",2,47.3,9991177,"Michigan","MI","Comerica Park",41782,"Detroit",2000,"Baseball","Detroit Tigers",34,81,1.225e+09,49.7,0.419753086419753
+"18","California",4,31.5,39776830,"California","CA","AT&T Park",41503,"San Francisco",2000,"Baseball","San Francisco Giants",38,81,2.85e+09,92.7,0.469135802469136
+"19","Illinois",2,38.4,12769320,"Illinois","IL","Wrigley Field",41160,"Chicago",1914,"Baseball","Chicago Cubs",50,86,2.9e+09,90.5,0.581395348837209
+"20","Texas",5,52.2,28704330,"Texas","TX","Minute Maid Park",40950,"Houston",2000,"Baseball","Houston Astros",55,87,1.65e+09,86.8,0.632183908045977
+"21","Illinois",2,38.4,12769320,"Illinois","IL","Guaranteed Rate Field",40615,"Chicago",1991,"Baseball","Chicago White Sox",39,81,1.5e+09,39.4,0.481481481481481
+"22","Minnesota",5,44.9,5628162,"Minnesota","MN","Target Field[40]",39504,"Minneapolis",2010,"Baseball","Minnesota Twins",41,81,1.15e+09,61,0.506172839506173
+"23","Missouri",2,56.4,6135888,"Missouri","MO","Ewing M. Kauffman Stadium",39000,"Kansas City",1973,"Baseball","Kansas City Royals",43,81,1.015e+09,52.1,0.530864197530864
+"24","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","PNC Park",38496,"Pittsburgh",2001,"Baseball","Pittsburgh Pirates",44,81,1.26e+09,44.5,0.54320987654321
+"25","Ohio",1,51.3,11694664,"Ohio","OH","Progressive Field",35051,"Cleveland",1994,"Baseball","Cleveland Indians",51,84,1.045e+09,43.8,0.607142857142857
+"26","Massachusetts",4,32.8,6895917,"Massachusetts","MA","Fenway Park",37731,"Boston",1912,"Baseball","Boston Red Sox",49,83,2.8e+09,91.3,0.590361445783133
+"27","Florida",4,48.6,21312211,"Florida","FL","Marlins Park",37000,"Miami",2012,"Baseball","Miami Marlins",42,88,1e+09,28.2,0.477272727272727
+"28","Florida",4,48.6,21312211,"Florida","FL","Tropicana Field",36973,"St. Petersburg",1990,"Baseball","Tampa Bay Rays",41,78,9e+08,41.3,0.525641025641026
+"29","Georgia",3,50.4,10545138,"Georgia","GA","SunTrust Park",41149,"Atlanta",2017,"Baseball","Atlanta Braves",37,81,1.625e+09,76.8,0.45679012345679
+"30","Florida",4,48.6,21312211,"Florida","FL","American Airlines Arena",19600,"Miami",1999,"Basketball","Miami Heat",26,43,1.7e+09,100.2,0.604651162790698
+"31","Texas",5,52.2,28704330,"Texas","TX","American Airlines Center",19200,"Dallas",2001,"Basketball","Dallas Mavericks",15,41,1.9e+09,103.1,0.365853658536585
+"32","Florida",4,48.6,21312211,"Florida","FL","Amway Center",18846,"Orlando",2010,"Basketball","Orlando Magic",17,41,1.225e+09,94.2,0.414634146341463
+"33","Texas",5,52.2,28704330,"Texas","TX","AT&T Center",18418,"San Antonio",2002,"Basketball","San Antonio Spurs",34,43,1.55e+09,99.2,0.790697674418605
+"34","Indiana",1,56.5,6699629,"Indiana","IN","Bankers Life Fieldhouse",17923,"Indianapolis",1999,"Basketball","Indiana Pacers",29,44,1.175e+09,91.9,0.659090909090909
+"35","New York",2,36.5,19862512,"New York","NY","Barclays Center",17732,"Brooklyn",2012,"Basketball","Brooklyn Nets",14,39,2.3e+09,85.2,0.358974358974359
+"36","D.C.",2,4.1,703608,"D.C.","DC","Capital One Arena",20356,"Washington",1997,"Basketball","Washington Wizards",25,44,1.35e+09,83.8,0.568181818181818
+"37","Oklahoma",1,65.3,3940521,"Oklahoma","OK","Chesapeake Energy Arena",18203,"Oklahoma City",2002,"Basketball","Oklahoma City Thunder",29,44,1.25e+09,100,0.659090909090909
+"38","Tennessee",2,60.7,6782564,"Tennessee","TN","FedExForum",18119,"Memphis",2004,"Basketball","Memphis Grizzlies",16,41,1.025e+09,91.2,0.390243902439024
+"39","California",4,31.5,39776830,"California","CA","Golden 1 Center",17608,"Sacramento",2016,"Basketball","Sacramento Kings",14,41,1.375e+09,100.6,0.341463414634146
+"40","Michigan",2,47.3,9991177,"Michigan","MI","Little Caesars Arena",20491,"Detroit",2017,"Basketball","Detroit Pistons",25,41,1.1e+09,72.4,0.609756097560976
+"41","New York",2,36.5,19862512,"New York","NY","Madison Square Garden",19812,"New York",1968,"Basketball","New York Knicks",19,41,3.6e+09,99.8,0.463414634146341
+"42","Oregon",3,39.1,4199563,"Oregon","OR","Moda Center",19980,"Portland",1995,"Basketball","Portland Trail Blazers",28,43,1.3e+09,99.4,0.651162790697674
+"43","California",4,31.5,39776830,"California","CA","Oracle Arena",19596,"Oakland",1966,"Basketball","Golden State Warriors",37,50,3.1e+09,100,0.74
+"44","Colorado",5,43.3,5684203,"Colorado","CO","Pepsi Center",19155,"Denver",1999,"Basketball","Denver Nuggets",31,41,1.125e+09,77.1,0.75609756097561
+"45","Georgia",3,50.4,10545138,"Georgia","GA","Philips Arena",18118,"Atlanta",1999,"Basketball","Atlanta Hawks",16,41,1.15e+09,85.2,0.390243902439024
+"46","Ohio",1,51.3,11694664,"Ohio","OH","Quicken Loans Arena",20562,"Cleveland",1994,"Basketball","Cleveland Cavaliers",37,50,1.325e+09,100,0.74
+"47","Louisiana",1,58.1,4682509,"Louisiana","LA","Smoothie King Center",16867,"New Orleans",1999,"Basketball","New Orleans Pelicans",27,45,1e+09,94.1,0.6
+"48","North Carolina",3,49.8,10390149,"North Carolina","NC","Spectrum Center",19077,"Charlotte",2005,"Basketball","Charlotte Hornets",21,41,1.05e+09,90.9,0.51219512195122
+"49","California",4,31.5,39776830,"California","CA","Staples Center",19060,"Los Angeles",1999,"Basketball","Los Angeles Clippers",22,41,2.15e+09,100.1,0.536585365853659
+"50","California",4,31.5,39776830,"California","CA","Staples Center",18997,"Los Angeles",1999,"Basketball","Los Angeles Lakers",20,41,3.3e+09,99.4,0.48780487804878
+"51","Arizona",5,48.1,7123898,"Arizona","AZ","Talking Stick Resort Arena",18422,"Phoenix",1992,"Basketball","Phoenix Suns",9,41,1.28e+09,93.8,0.219512195121951
+"52","Minnesota",5,44.9,5628162,"Minnesota","MN","Target Center",19356,"Minneapolis",1990,"Basketball","Minnesota Timberwolves",31,43,1.06e+09,76.5,0.720930232558139
+"53","Massachusetts",4,32.8,6895917,"Massachusetts","MA","TD Garden",18624,"Boston",1995,"Basketball","Boston Celtics",37,52,2.5e+09,99.6,0.711538461538462
+"54","Texas",5,52.2,28704330,"Texas","TX","Toyota Center",18055,"Houston",2003,"Basketball","Houston Rockets",41,50,2.2e+09,94.1,0.82
+"55","Illinois",2,38.4,12769320,"Illinois","IL","United Center",20917,"Chicago",1994,"Basketball","Chicago Bulls",17,41,2.6e+09,103.6,0.414634146341463
+"56","Utah",4,45.1,3159345,"Utah","UT","Vivint Smart Home Arena",18303,"Salt Lake City",1991,"Basketball","Utah Jazz",31,46,1.2e+09,98.8,0.673913043478261
+"57","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","Wells Fargo Center",20328,"Philadelphia",1996,"Basketball","Philadelphia 76ers",33,45,1.18e+09,85.3,0.733333333333333
+"58","Wisconsin",3,47.2,5818049,"Wisconsin","WI","Wisconsin Entertainment and Sports Center",17500,"Milwaukee",2018,"Basketball","Milwaukee Bucks",28,44,1.075e+09,84.6,0.636363636363636
+"59","Texas",5,52.2,28704330,"Texas","TX","AT&T Stadium",1e+05,"Arlington",2009,"Football","Dallas Cowboys",3,8,4.8e+09,92.7,0.375
+"60","New Jersey",3,41,9032872,"New Jersey","NJ","MetLife Stadium",82500,"East Rutherford",2010,"Football","New York Giants",2,8,3.3e+09,92.7,0.25
+"61","New Jersey",3,41,9032872,"New Jersey","NJ","MetLife Stadium",82500,"East Rutherford",2010,"Football","New York Jets",4,8,2.75e+09,94,0.5
+"62","Maryland",2,33.9,6079602,"Maryland","MD","FedExField",82000,"Landover",1997,"Football","Washington Redskins",5,8,3.1e+09,88.4,0.625
+"63","Wisconsin",3,47.2,5818049,"Wisconsin","WI","Lambeau Field",81435,"Green Bay",1957,"Football","Green Bay Packers",4,8,2.55e+09,106.8,0.5
+"64","Florida",4,48.6,21312211,"Florida","FL","TIAA Bank Field",76867,"Jacksonville",1949,"Football","Jacksonville Jaguars",6,8,2.075e+09,95.6,0.75
+"65","Missouri",2,56.4,6135888,"Missouri","MO","Arrowhead Stadium",76416,"Kansas City",1972,"Football","Kansas City Chiefs",6,9,2.1e+09,97,0.666666666666667
+"66","Colorado",5,43.3,5684203,"Colorado","CO","Sports Authority Field at Mile High",76125,"Denver",2001,"Football","Denver Broncos",4,8,2.6e+09,100.3,0.5
+"67","North Carolina",3,49.8,10390149,"North Carolina","NC","Bank of America Stadium",75419,"Charlotte",1996,"Football","Carolina Panthers",6,8,2.3e+09,99.8,0.75
+"68","Louisiana",1,58.1,4682509,"Louisiana","LA","Mercedes-Benz Superdome",73370,"New Orleans",1975,"Football","New Orleans Saints",8,9,2e+09,95.6,0.888888888888889
+"69","New York",2,36.5,19862512,"New York","NY","New Era Field",71608,"Orchard Park",1973,"Football","Buffalo Bills",6,8,1.6e+09,91.4,0.75
+"70","Texas",5,52.2,28704330,"Texas","TX","NRG Stadium",71500,"Houston",2002,"Football","Houston Texans",3,8,2.8e+09,101,0.375
+"71","Maryland",2,33.9,6079602,"Maryland","MD","M&T Bank Stadium",71008,"Baltimore",1998,"Football","Baltimore Ravens",5,8,2.5e+09,99.4,0.625
+"72","Tennessee",2,60.7,6782564,"Tennessee","TN","Nissan Stadium",68798,"Nashville",1999,"Football","Tennessee Titans",6,8,2.05e+09,95,0.75
+"73","Massachusetts",4,32.8,6895917,"Massachusetts","MA","Gillette Stadium",68756,"Foxborough",2002,"Football","New England Patriots",8,10,3.7e+09,100,0.8
+"74","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","Lincoln Financial Field",68532,"Philadelphia",2003,"Football","Philadelphia Eagles",9,10,2.65e+09,100,0.9
+"75","California",4,31.5,39776830,"California","CA","Levi's Stadium",68500,"Santa Clara",2014,"Football","San Francisco 49ers",3,8,3.05e+09,102.4,0.375
+"76","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","Heinz Field",68400,"Pittsburgh",2001,"Football","Pittsburgh Steelers",6,9,2.45e+09,91.3,0.666666666666667
+"77","Ohio",1,51.3,11694664,"Ohio","OH","FirstEnergy Stadium",67431,"Cleveland",1999,"Football","Cleveland Browns",0,7,1.95e+09,87.3,0
+"78","Washington",3,36.8,7530552,"Washington","WA","CenturyLink Field",67000,"Seattle",2002,"Football","Seattle Seahawks",4,8,2.425e+09,102.9,0.5
+"79","Minnesota",5,44.9,5628162,"Minnesota","MN","U.S. Bank Stadium",66655,"Minneapolis",2016,"Football","Minnesota Vikings",8,9,2.4e+09,91.4,0.888888888888889
+"80","Florida",4,48.6,21312211,"Florida","FL","Raymond James Stadium",65857,"Tampa",1998,"Football","Tampa Bay Buccaneers",4,8,1.975e+09,91,0.5
+"81","Ohio",1,51.3,11694664,"Ohio","OH","Paul Brown Stadium",65790,"Cincinnati",2000,"Football","Cincinnati Bengals",4,8,1.8e+09,81.3,0.5
+"82","Florida",4,48.6,21312211,"Florida","FL","Hard Rock Stadium",65326,"Miami Gardens",1987,"Football","Miami Dolphins",4,7,2.575e+09,103.5,0.571428571428571
+"83","Michigan",2,47.3,9991177,"Michigan","MI","Ford Field",65000,"Detroit",2002,"Football","Detroit Lions",4,8,1.7e+09,98.7,0.5
+"84","California",4,31.5,39776830,"California","CA","Oakland–Alameda County Coliseum",63026,"Oakland",1966,"Football","Oakland Raiders",4,7,2.38e+09,91.5,0.571428571428571
+"85","Indiana",1,56.5,6699629,"Indiana","IN","Lucas Oil Stadium",63000,"Indianapolis",2008,"Football","Indianapolis Colts",3,8,2.375e+09,100.7,0.375
+"86","Illinois",2,38.4,12769320,"Illinois","IL","Soldier Field",61500,"Chicago",1924,"Football","Chicago Bears",3,8,2.85e+09,99.4,0.375
+"87","Florida",4,48.6,21312211,"Florida","FL","Amalie Arena",19092,"Tampa",1996,"Hockey","Tampa Bay Lightning",29,41,3.9e+08,100,0.707317073170732
+"88","Texas",5,52.2,28704330,"Texas","TX","American Airlines Center",18532,"Dallas",2001,"Hockey","Dallas Stars",26,41,5.15e+08,97.7,0.634146341463415
+"89","Florida",4,48.6,21312211,"Florida","FL","BB&T Center",19250,"Sunrise",1998,"Hockey","Florida Panthers",27,41,3.05e+08,81.3,0.658536585365854
+"90","New York",2,36.5,19862512,"New York","NY","Barclays Center",15795,"Brooklyn",2012,"Hockey","New York Islanders",19,41,3.95e+08,75.9,0.463414634146341
+"91","Tennessee",2,60.7,6782564,"Tennessee","TN","Bridgestone Arena",17113,"Nashville",1996,"Hockey","Nashville Predators",28,41,3.8e+08,101.1,0.682926829268293
+"92","D.C.",2,4.1,703608,"D.C.","DC","Capital One Arena",18506,"Washington",1997,"Hockey","Washington Capitals",28,41,6.25e+08,104,0.682926829268293
+"93","Arizona",5,48.1,7123898,"Arizona","AZ","Gila River Arena",17125,"Glendale",2003,"Hockey","Arizona Coyotes",16,41,3e+08,76.2,0.390243902439024
+"94","California",4,31.5,39776830,"California","CA","Honda Center",17174,"Anaheim",1993,"Hockey","Anaheim Ducks",26,41,4.6e+08,96.9,0.634146341463415
+"95","New York",2,36.5,19862512,"New York","NY","KeyBank Center",19070,"Buffalo",1996,"Hockey","Buffalo Sabres",11,41,3.5e+08,99.8,0.268292682926829
+"96","Michigan",2,47.3,9991177,"Michigan","MI","Little Caesars Arena",19515,"Detroit",2017,"Hockey","Detroit Red Wings",16,41,7e+08,100,0.390243902439024
+"97","New York",2,36.5,19862512,"New York","NY","Madison Square Garden",18006,"New York",1968,"Hockey","New York Rangers",21,41,1.5e+09,99.1,0.51219512195122
+"98","Ohio",1,51.3,11694664,"Ohio","OH","Nationwide Arena",18144,"Columbus",2000,"Hockey","Columbus Blue Jackets",26,41,3.15e+08,91.8,0.634146341463415
+"99","Colorado",5,43.3,5684203,"Colorado","CO","Pepsi Center",17809,"Denver",1999,"Hockey","Colorado Avalanche",28,41,3.85e+08,87.1,0.682926829268293
+"100","North Carolina",3,49.8,10390149,"North Carolina","NC","PNC Arena",18680,"Raleigh",1999,"Hockey","Carolina Hurricanes",19,41,3.7e+08,71.3,0.463414634146341
+"101","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","PPG Paints Arena",18387,"Pittsburgh",2010,"Hockey","Pittsburgh Penguins",30,41,6.5e+08,101,0.731707317073171
+"102","New Jersey",3,41,9032872,"New Jersey","NJ","Prudential Center",16514,"Newark",2007,"Hockey","New Jersey Devils",23,41,4e+08,92,0.560975609756098
+"103","California",4,31.5,39776830,"California","CA","SAP Center",17562,"San Jose",1993,"Hockey","San Jose Sharks",25,41,4.9e+08,98.9,0.609756097560976
+"104","Missouri",2,56.4,6135888,"Missouri","MO","Scottrade Center",18724,"St. Louis",1994,"Hockey","St. Louis Blues",24,41,4.5e+08,95.9,0.585365853658537
+"105","California",4,31.5,39776830,"California","CA","Staples Center",18230,"Los Angeles",1999,"Hockey","Los Angeles Kings",23,41,7.5e+08,100.1,0.560975609756098
+"106","Massachusetts",4,32.8,6895917,"Massachusetts","MA","TD Garden",17565,"Boston",1995,"Hockey","Boston Bruins",28,41,8.9e+08,100,0.682926829268293
+"107","Nevada",2,45.5,3056824,"Nevada","NV","T-Mobile Arena",17368,"Paradise",2016,"Hockey","Vegas Golden Knights",29,41,5e+08,103.9,0.707317073170732
+"108","Illinois",2,38.4,12769320,"Illinois","IL","United Center",19717,"Chicago",1994,"Hockey","Chicago Blackhawks",18,41,1e+09,109.8,0.439024390243902
+"109","Pennsylvania",3,48.2,12823989,"Pennsylvania","PA","Wells Fargo Center",19543,"Philadelphia",1996,"Hockey","Philadelphia Flyers",22,41,7.4e+08,99.9,0.536585365853659
+"110","Minnesota",5,44.9,5628162,"Minnesota","MN","Xcel Energy Center",17954,"Saint Paul",2000,"Hockey","Minnesota Wild",27,41,4.4e+08,106,0.658536585365854
+"111","California",4,31.5,39776830,"California","CA","Los Angeles Memorial Coliseum",93607,"Los Angeles",1923,"Football","Los Angeles Rams",3,8,3e+09,67.7,0.375
+"112","Georgia",3,50.4,10545138,"Georgia","GA","Mercedes-Benz Stadiumdouble-dagger",71000,"Atlanta",2017,"Football","Atlanta Falcons",5,8,2.475e+09,95.9,0.625
+"113","California",4,31.5,39776830,"California","CA","StubHub Center",27000,"Carson",2003,"Football","Los Angeles Chargers",5,8,2.275e+09,93.8,0.625
+"114","Arizona",5,48.1,7123898,"Arizona","AZ","University of Phoenix Stadiumdouble-dagger",63400,"Glendale",2006,"Football","Arizona Cardinals",5,8,2.15e+09,98.8,0.625
