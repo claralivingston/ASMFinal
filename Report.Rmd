@@ -51,7 +51,7 @@ stargazer(AllData3,header = FALSE)
 ```
 
 When investigating what variables may be influential in our model, we started with potential random effects. The final model contained only one random effect, the random intercept for state. To help explain the need for such an effect, we can see from the map below that the average win percentage for the 2017 season across all four major league teams is highly variable between states. It should be noted that states in white do not have major league teams and thus are not represented within the data. States like Illinois, New Jersey, and New Mexico had very low average win percentatges. On the opposite end of the spectrum, states like Nevada and Lousisiana had very high average win percentages. It is this variability that helps justify the addition of a random effect for state, given there are 50 states and the addition of a categorical variable would not be appropriate to justify such difference. From here, we decided to run a model with all fixed effects interaction terms that appeared significant in the exploratory data analysis. 
-After running a binomial logistic regression with all of the itneractions that appeared significant in EDA, it became clear that the random effect for state was no longer large enough to justify a place in the model. It was also apparent, however, that many of the interaction terms were not significant in this model. To determine what interactions would be influential in the final model, 
+After running a binomial logistic regression with all of the itneractions that appeared significant in EDA, *it became clear that the random effect for state was no longer large enough to justify a place in the model.* (this makes it sounds like we took it out... I think we just don't talk about that and say that it was too many variables) It was also apparent, however, that many of the interaction terms were not significant in this model. To determine what interactions would be influential in the final model, 
 
 ```{r,fig.cap="Average Win Percentage by State",results='asis',warning=FALSE}
 AllStates <- fifty_states
@@ -77,12 +77,10 @@ When determining random effects to use in the model, we opted not to include spo
 
 From initally data analysis, we discovered fourteen possible interactions. These included six interactions at the stadium/team level, all three at the state level, and five between levels. Of these fourteen interactions, only four were significant in the final model. These interactions are between sport type and attendance, sport type and capacity, state population and happiness, and capacity and attendence.
 
-EDA of the final model interactions can be found below:
-
 ```{r}
 # make capacity a factor for data exploration
 AllData$Capacity <- as.numeric(AllData$Capacity)
-AllData$CapFactor <- cut(AllData$Capacity, breaks = c(0, 18578, 27000,  62250,100000), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
+AllData$CapFactor <- cut(AllData$Capacity, breaks = c(0, 18638, 37366,  63026,100000), labels = c("1st Q", "2nd Q", "3rd Q", "4th Q"))
 
 # make franchise a factor for data exploration
 AllData$FranchiseValue <- as.numeric(AllData$FranchiseValue)
@@ -106,23 +104,26 @@ plot2 <- ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap
 grid.arrange(plot1,plot2,ncol=2)
 ```
 
-```{r, fig.cap="Population by Happiness and Attendance by Capacity Factor"}
+Looking at Figure 2 of the graphs of attendance vs home win percentage, we see the effect varies by type of sport. Baseball, Football and Hockey all see a positive relationship, as attendance increases, win percentage increases. Basketball on the other hand sees a slight decrease, but it is hard to tell if this is significant from the data since for most teams, attendance is high. 
+
+A similar relationship exists with stadium capacity. However since stadium capacity varies by sport.  *should we insert some of the boxplots here or a table of how these vary by sport* it is hard to tell the true effect on win percentage. This graph suggests that Football, Baseball and Basketball have a postive relationship with capacity and win percentage while hockey has a negative.
+
+```{r, fig.cap="Attendance by Capacity Factor and Population by Happiness"}
 require(gridExtra)
 plot3 <- ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Population by Happiness",x="State Population",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=8),axis.text.x = element_text(angle = 90))
 
 plot4 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm)+labs(title="Home Win Percentage Against Attendance by Capacity Quantiles",x="Attendance",y="Home Win Percentage")+theme_classic()+ theme(text = element_text(size=8))
 
-grid.arrange(plot3, plot4, ncol=2)
+grid.arrange(plot4, plot3, ncol=2)
+
+
 ```
 
+While both capacity and attendance change their effect on home win percentage with team, we also see an interaction between attendance and capacity. For small capacity stadiums and large stadiums, we see a positive relationship between attendance and home win percentage, while the medium size stadiums don't appear to have a relationship of between attendance and home win percentage. This can be found in Figure 3.
 
+Finally to examine the interaction at the state level, for the most part, as population increases for each happiness level, home win percentage decreases. However, for happiness level 3, there is a positive relationship between population and home win percentage.
 
-
-To discover the relationship between home game winning percentages and the variables of interest, we used logistic binomial regression. We observed variation in home win percentage by state, but did not want to include a variable for each state, we decided to include state as a random effect in our model. 
-
-Insert a couple sentences about modeling process description?
-
-The heirarchical form of the final model is below. Estimates for the $\beta$ parameters can be found in Table ??. Note that Sport Baseball is the baseline level.
+Those interactions were found significant in our final model. The heirarchical form of the final model is below. Estimates for the $\beta$ parameters can be found in Table 2. Note that Sport Baseball is the baseline level.
 
 ####Level 1 (team level): 
 $logodds(homewins) = a_i + \beta_0 Capacity_{ij} + \beta_1 Attendence_{ij} + \beta_2SportBasektball_{ij} + \beta_3SportFootball_{ij} + \beta_4SportHockey_{ij} + \beta_5FranchiseValue_{ij} + \beta_6 YearOpened_{ij} + \beta_7Capacity_{ij}SportBasektball_{ij} + \beta_8Capacity_{ij}SportFootball_{ij} + \beta_9Capacity_{ij}SportHockey_{ij} + + \beta_{10}Attendence_{ij}SportBasektball_{ij} + \beta_{11}Attendence_{ij}SportFootball_{ij} + \beta_{12}Attendence_{ij}SportHockey_{ij} + \beta_{13}Attendence_{ij}Capacity_{ij}$
