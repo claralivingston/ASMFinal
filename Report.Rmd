@@ -11,6 +11,7 @@ library(fiftystater)
 library(ggplot2)
 library(dplyr)
 library(stargazer)
+library(gridExtra)
 ```
 
 #Introduction
@@ -27,12 +28,66 @@ Our data is pirmarily in two parts: data related to the state level characterist
 
 The second portion of our data was related to the individual major league teams' home stadiums and stadium statistics for the 2017 seasons. We focused our study to baseball (MLB), basketball (MBA), football (NFL), and hockey (NHL). From Wikipedia, we were able to gather the name of the arena or stadium currently being used by active teams, capacity (in thousands), and year opened. It is important to note that across the internet there is some discrepancy in the actual capacity of some of these arenas. Generally, the capacity listed on Wikipedia is fairly accurate for our purposes and will be the variable used in this analysis. In addition to this basic information, we decided to look at the average attendance percentage (people in attendance divided by capacity) fro the 2017 season for these teams. This data was collected through ESPN's database on sport statistics for the NFL, MLB, NBA, and NHL. Our final explanatory variable of interest was the franchise values of the teams in questions. We gathered this data from Forbes and recorded it in dollar value. Our interest in the variable primarily comes from the likelihood that teams with larger budgets likely have the flexibility to contract better players and spend more on facilities than teams that do not have this luxury. 
 
-Our dependant variable, home win percentage, was determined using data from Team Rankings. This site provided the home win-loss record for the 2017 seasons. We then used this information to calculate the win percentage by dividing the wins by total number of games played at home (value between 0 and 1). It is from this data we were able to build our two level model with random intercept. 
+Our dependant variable, home win percentage, was determined using data from Team Rankings. This site provided the home win-loss record for the 2017 seasons. We then used this information to calculate the win percentage by dividing the wins by total number of games played at home (value between 0 and 1). It is from this data we were able to build our two level model with random intercept. Minimal information could be collected for the Canadian teams that are part of the major leagues in the United States, thus the 11 data points that were from Canada were removed. 
 
 #Results
 
-- Numerical summary of quantitative variables
-- map plot and exlination of random effect 
+A summary of the quantitative variables can be found below:
+
+```{r,results='asis',warning=FALSE}
+state <- read.csv("StateData.csv")
+statestuff <- data.frame(state.abb,state.name)
+colnames(statestuff) <- c("State","StateName")
+state <- full_join(state,statestuff)
+state$StateName <- as.character(state$StateName)
+state <- state%>%mutate(StateAbb=State,State=ifelse(State=="DC","District of Columbia",StateName))
+state <- state%>%mutate(state2=tolower(State))
+AllData <- read.csv("AllData.csv")
+AllData <- AllData%>%mutate(state2=tolower(State),WinPct = HomeWins/HomeGames)
+AllData3 <- AllData%>%select(Happiness,Trump.Vote,Population,Capacity,FranchiseValue,Attendence,WinPct) 
+stargazer(AllData3,header = FALSE)
+```
+
+When investigating what variables may be influential in our model, we started with potential random effects. The final model contained only one random effect, the random intercept for state. To help explain the need for such an effect, we can see from the map below that the average win percentage for the 2017 season across all four major league teams is highly variable between states. It should be noted that states in white do not have major league teams and thus are not represented within the data. States like Illinois, New Jersey, and New Mexico had very low average win percentatges. On the opposite end of the spectrum, states like Nevada and Lousisiana had very high average win percentages. It is this variability that helps justify the addition of state, given there are 50 states and the addition of a categorical variable would not be appropriate to justify such difference. From here, we decided to run a model with all fixed effects interaction terms that appeared significant in the exploratory data analysis. 
+After running a binomial logistic regression with all of the itneractions that appeared significant in EDA, it became clear that the random effect for state was no longer large enough to justify a place in the model. It was also apparent, however, that many of the interaction terms were not significant in this model. To determine what interactions would be influential in the final model, 
+
+```{r,fig.cap="Average Win Percentage by State",results='asis',warning=FALSE}
+AllStates <- fifty_states
+AllStates$state <- AllStates$id
+state <- read.csv("StateData.csv")
+statestuff <- data.frame(state.abb,state.name)
+colnames(statestuff) <- c("State","StateName")
+state <- full_join(state,statestuff)
+state$StateName <- as.character(state$StateName)
+state <- state%>%mutate(StateAbb=State,State=ifelse(State=="DC","District of Columbia",StateName))
+state <- state%>%mutate(state2=tolower(State))
+AllData <- read.csv("AllData.csv")
+AllData <- AllData%>%mutate(state2=tolower(State),WinPct = HomeWins/HomeGames)
+AllData2 <- AllData%>%group_by(state2)%>%summarise(AvgWin=mean(WinPct))
+
+
+state2 <- state%>%filter(StateAbb!="DC")
+#Average percent home games won by state
+ggplot() + coord_map() + geom_map(data = AllData2, aes(map_id = state2, fill = AvgWin), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Percent Won By State") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Percent", palette = "BuPu") +theme_classic()
+```
+
+
+EDA of the final model interactions can be found below:
+
+```{r}
+#require(gridExtra)
+#plot1 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~Type) +geom_smooth(method=lm)
+
+#plot2 <- ggplot(AllData, aes(x=Capacity,y = WinPct)) + geom_point() + facet_wrap(~Type)+geom_smooth(method=lm)
+
+#plot3 <- ggplot(AllData, aes(x=Population,y = WinPct)) + geom_point() + facet_wrap(~as.factor(Happiness)) +geom_smooth(method=lm)
+
+#plot4 <- ggplot(AllData, aes(x=Attendence,y = WinPct)) + geom_point() + facet_wrap(~CapFactor) +geom_smooth(method=lm)
+
+#grid.arrange(plot1, plot2,ncol=2)
+#grid.arrange(plot3,plot4,ncol=2)
+```
+
 - discussion of choosing to add type/sport as a variable rather than random effect
 - fixed effects and why we chose the interactions we did, with support from eda plots
 - discuss why we ended up not using the interactions we thought might be influential
@@ -74,7 +129,7 @@ stargazer(final.glmer,single.row = TRUE,column.sep.width = "1pt", header = FALSE
 
 
 
-```{r,fig.cap="Caption Goes Here",results='asis'}
+```{r,fig.cap="Caption Goes Here",results='asis',warning=FALSE}
 AllStates <- fifty_states
 AllStates$state <- AllStates$id
 state <- read.csv("StateData.csv")
@@ -89,15 +144,8 @@ AllData <- AllData%>%mutate(state2=tolower(State),WinPct = HomeWins/HomeGames)
 AllData2 <- AllData%>%group_by(state2)%>%summarise(AvgWin=mean(WinPct))
 
 #Population
-ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Population), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Population By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Population", palette = "BuPu") +theme_classic()
+#ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Population), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Population By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Population", palette = "BuPu") +theme_classic()
 
 #Happiness
-ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Happiness), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Happiness By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Happiness", palette = "BuPu") +theme_classic()
-
-state2 <- state%>%filter(StateAbb!="DC")
-#Average percent home games won by state
-ggplot() + coord_map() + geom_map(data = AllData2, aes(map_id = state2, fill = AvgWin), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Percent Won By State") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Percent", palette = "BuPu") +theme_classic()
-
-
-#
+#ggplot() + coord_map() + geom_map(data = state, aes(map_id = state2, fill = Happiness), map = AllStates) + expand_limits(x = AllStates$long, y = AllStates$lat) + ggtitle("Happiness By State 2017") + labs(x= "Longitute", y  = "Latitude") +scale_fill_distiller(name = "Happiness", palette = "BuPu") +theme_classic()
 ```
