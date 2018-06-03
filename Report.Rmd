@@ -128,7 +128,7 @@ Where $u_i$ ~ $Norm(0, \sigma)$. Our model predicted $\hat \sigma =  0.1434$
 
 
 ```{r, results = "asis"}
-final.glmer <- readRDS("Final.rds")
+final.glmer <- readRDS("Model7.rds")
 stargazer(final.glmer,single.row = TRUE,column.sep.width = "1pt", header = FALSE, covariate.labels = c("Capacity", "Attendance", "Basketball", "Football", "Hockey", "FranchiseValue", "Population", "Happiness", "YearOpened", "Attendance*Basketball", "Attendance*Football", "Attendance*Hockey", "Capacity*Basketball", "Capacity*Football", "Capacity*Hockey", "Population*Happiness", "Capacity*Attendance"))
 ```
 
